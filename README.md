@@ -1,1 +1,1 @@
-# Plan-My-Movie
+# Plan My Movie
