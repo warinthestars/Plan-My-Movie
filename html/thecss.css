@@ -1,0 +1,37 @@
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+	.select2-result-movie__poster{
+		float: left;
+		padding-right: 15px;
+		padding-left: 15px;
+	}
+	.select2-result-movie__title{
+		font-weight: bold;
+	}
+	.select2-result-movie{
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+	.js-data-example-ajax{
+		width: 80%;
+	}
+	.center {
+	  margin: auto;
+	  width: 60%;
+	  border: 3px solid #73AD21;
+	  padding: 10px;
+	}
