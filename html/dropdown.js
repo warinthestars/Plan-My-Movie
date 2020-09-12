@@ -39,19 +39,17 @@ function formatMovie (movie) {
 
   var $container = $(
 	"<div class='select2-result-movie clearfix'>" +
-		"<div class='select2-result-movie__poster'><img src='" + "https://image.tmdb.org/t/p/w92" + movie.poster_path + "' /></div>" +
+		"<div class='select2-result-movie__poster clearfix'><img src='" + "https://image.tmdb.org/t/p/w92" + movie.poster_path + "' /></div>" +
 		"<div class='select2-result-movie__meta'>" +
-			"<div class='select2-result-movie__title'></div>" +
+			"<div class='select2-result-movie__titleanddate'></div>" +
 			"<div class='select2-result-movie__description'></div>" +
-			"<div class='select2-result-movie__releasedate'></div>" +
 		"</div>" +
 	"</div>" +
 	"<br>"
   );
 
-  $container.find(".select2-result-movie__title").text(movie.title);
+  $container.find(".select2-result-movie__titleanddate").append(movie.title + " (" + movie.release_date + ")");
   $container.find(".select2-result-movie__description").text(movie.overview);
-  $container.find(".select2-result-movie__releasedate").text(movie.release_date);
 
   return $container;
 }

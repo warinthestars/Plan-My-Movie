@@ -18,8 +18,9 @@
 		float: left;
 		padding-right: 15px;
 		padding-left: 15px;
+		width: 25%;
 	}
-	.select2-result-movie__title{
+	.select2-result-select2-result-movie__titleanddate{
 		font-weight: bold;
 	}
 	.select2-result-movie{
@@ -28,6 +29,12 @@
 	}
 	.js-data-example-ajax{
 		width: 80%;
+	}
+	.select2-result-movie__description{
+		font-size: 14px;
+	}
+	.select2-result-movie__meta{
+		width: 75%;
 	}
 	.center {
 	  margin: auto;
