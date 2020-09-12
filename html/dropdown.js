@@ -48,7 +48,7 @@ function formatMovie (movie) {
 	"<br>"
   );
 
-  $container.find(".select2-result-movie__titleanddate").append(movie.title + " (" + movie.release_date + ")");
+  $container.find(".select2-result-movie__titleanddate").append(movie.title + " (" + movie.release_date.slice(0,4) + ")");
   $container.find(".select2-result-movie__description").text(movie.overview);
 
   return $container;

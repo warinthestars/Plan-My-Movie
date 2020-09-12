@@ -28,7 +28,7 @@
 		padding-bottom: 15px;
 	}
 	.js-data-example-ajax{
-		width: 80%;
+		width: 100%;
 	}
 	.select2-result-movie__description{
 		font-size: 14px;
@@ -36,9 +36,12 @@
 	.select2-result-movie__meta{
 		width: 75%;
 	}
+	.select2-results__option
+		padding: 20px;
+	}
 	.center {
 	  margin: auto;
-	  width: 60%;
+	  width: 70%;
 	  border: 3px solid #73AD21;
 	  padding: 10px;
 	}
