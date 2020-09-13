@@ -23,10 +23,16 @@
 	.select2-result-select2-result-movie__titleanddate{
 		font-weight: bold;
 	}
+	
+	/*
 	.select2-result-movie{
+		
 		padding-top: 15px;
 		padding-bottom: 15px;
+		
 	}
+	*/
+	
 	.js-data-example-ajax{
 		width: 100%;
 	}
@@ -36,12 +42,25 @@
 	.select2-result-movie__meta{
 		width: 75%;
 	}
-	.select2-results__option
-		padding: 20px;
+	/*
+	.select2-results__option{
+		
+		height: 175px;
+		
 	}
+	*/
+	
 	.center {
 	  margin: auto;
 	  width: 70%;
+	  border: 3px solid #73AD21;
+	  padding: 10px;
+	  display: inline-block;
+	  height: 100%;
+	}
+	.idk {
+	  margin: auto;
+	  width: 100%;
 	  border: 3px solid #73AD21;
 	  padding: 10px;
 	}

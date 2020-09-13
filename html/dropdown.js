@@ -26,6 +26,7 @@ $(document).ready(function() {
 		},
 		cache: true
 	  },
+	  dropdownParent: $('#results'),
 	  placeholder: 'Search for a movie',
 	  minimumInputLength: 1,
 	  templateResult: formatMovie,
@@ -39,7 +40,7 @@ function formatMovie (movie) {
 
   var $container = $(
 	"<div class='select2-result-movie clearfix'>" +
-		"<div class='select2-result-movie__poster clearfix'><img src='" + "https://image.tmdb.org/t/p/w92" + movie.poster_path + "' /></div>" +
+		"<div class='select2-result-movie__poster clearfix'><img src=" + "https://image.tmdb.org/t/p/w154" + movie.poster_path + " style='width:70%;height:70%;'></div>" +
 		"<div class='select2-result-movie__meta'>" +
 			"<div class='select2-result-movie__titleanddate'></div>" +
 			"<div class='select2-result-movie__description'></div>" +
@@ -48,13 +49,15 @@ function formatMovie (movie) {
 	"<br>"
   );
 
-  $container.find(".select2-result-movie__titleanddate").append(movie.title + " (" + movie.release_date.slice(0,4) + ")");
-  $container.find(".select2-result-movie__description").text(movie.overview);
+  // $container.find(".select2-result-movie__titleanddate").append(movie.title + " (" + movie.release_date.slice(0,4) + ")");
+  $container.find(".select2-result-movie__titleanddate").append(movie.title + " (" + movie.release_date + ")");
+  $container.find(".select2-result-movie__description").append(movie.overview.slice(0,300) + "...");
 
   return $container;
 }
 
 function formatMovieSelection (movie) {
-  return movie.title || movie.text;
+//  return (movie.title + " (" + movie.release_date.slice(0,4) + ")") || movie.text;
+	return movie.title || movie.text;
 }
 });
