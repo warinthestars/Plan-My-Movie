@@ -40,7 +40,7 @@ function formatMovie (movie) {
 
   var $container = $(
 	"<div class='select2-result-movie clearfix'>" +
-		"<div class='select2-result-movie__poster clearfix'><img src=" + "https://image.tmdb.org/t/p/w154" + movie.poster_path + " style='width:70%;height:70%;'></div>" +
+		"<div class='select2-result-movie__poster clearfix'><img src=" + "https://image.tmdb.org/t/p/w92" + movie.poster_path + "></div>" +
 		"<div class='select2-result-movie__meta'>" +
 			"<div class='select2-result-movie__titleanddate'></div>" +
 			"<div class='select2-result-movie__description'></div>" +
