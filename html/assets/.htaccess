@@ -1,3 +1,9 @@
-Options +Indexes 
-# or #
+# Deny access to .htaccess
+<Files .htaccess>
+Order allow,deny
+Deny from all
+</Files>
+# Disables directory browsing
+Options -Indexes 
+# Hide the contents of directories
 IndexIgnore *
