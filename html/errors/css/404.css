@@ -1,167 +1,195 @@
-*, *::after, *::before {
-  box-sizing: border-box;
+body {
+  background: #212549;
+  font-size: 62.5%;
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
 }
 
-html {
-  background: #000;
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-}
-
-head {
-  display: block;
-  position: relative;
-  width: 200px;
-  margin: 10% auto 0;
-  -webkit-animation: shvr 0.2s infinite;
-  animation: shvr 0.2s infinite;
-}
-head::after {
-  content: '';
-  width: 20px;
-  height: 20px;
-  background: #000;
+.planet {
   position: absolute;
-  top: 30px;
-  left: 25px;
+  left: 50%;
+  top: 10em;
+  margin-left: -15em;
+  width: 30em;
+  height: 30em;
+  background: #ddd;
   border-radius: 50%;
-  box-shadow: 125px 0 0 #000;
-  -webkit-animation: eye 2.5s infinite;
-  animation: eye 2.5s infinite;
+  box-shadow: inset -1.6em 0 0 0 #ccc, 0 0 1em 0 #ccc;
 }
-
-meta {
-  position: relative;
-  display: inline-block;
+.planet .crater {
+  position: absolute;
+}
+.planet .crater:nth-child(1) {
+  left: 5.5em;
+  top: 11em;
+  width: 7.5em;
+  height: 8em;
+  border-radius: 50%;
+  background: #999;
+  box-shadow: inset 0.5em 0 0.1em 0 #777, -0.1em 0 0 0.1px #eee, 0.4em 0 0.2em 0 #ccc;
+}
+.planet .crater:nth-child(2) {
+  left: 16.2em;
+  top: 25em;
+  width: 4em;
+  height: 2.8em;
+  border-radius: 50%;
+  background: #999;
+  -webkit-transform: rotate(-22deg);
+  -moz-transform: rotate(-22deg);
+  -ms-transform: rotate(-22deg);
+  transform: rotate(-22deg);
+  box-shadow: inset 0.2em 0.1em 0.2em 0 #777, -0.1em -0.1em 0 0.1em #eee, 0.2em 0.1em 0.2em 0 #ccc;
+}
+.planet .crater:nth-child(3) {
+  left: 25.4em;
+  top: 17em;
+  width: 2em;
+  height: 3em;
+  border-radius: 50%;
+  background: #999;
+  -webkit-transform: rotate(12deg);
+  -moz-transform: rotate(12deg);
+  -ms-transform: rotate(12deg);
+  transform: rotate(12deg);
+  box-shadow: inset 0.2em 0 0.1em 0 #777, -0.1em 0 0 0.1em #eee;
+}
+.planet .crater:nth-child(4) {
+  left: 24.4em;
+  top: 24.7em;
+  width: 0.8em;
+  height: 3em;
+  border-radius: 50%;
+  -webkit-transform: rotate(48deg);
+  -moz-transform: rotate(48deg);
+  -ms-transform: rotate(48deg);
+  transform: rotate(48deg);
+  box-shadow: inset 0.4em 0.1em 0 0 #ccc, inset -0.1em 0.1em 0 0 #ccc;
+  background: #999;
+}
+.planet .crater:nth-child(5) {
+  left: 27.4em;
+  top: 5.6em;
+  width: 0.8em;
+  height: 3.6em;
+  border-radius: 50%;
+  -webkit-transform: rotate(-31deg);
+  -moz-transform: rotate(-31deg);
+  -ms-transform: rotate(-31deg);
+  transform: rotate(-31deg);
+  box-shadow: inset 0.4em 0.1em 0 0 #ccc, inset -0.1em 0.1em 0 0 #ccc;
+  background: #999;
+}
+.planet .flag {
+  position: absolute;
+  background: #bb0000;
+  padding: 0.2em 0.3em;
+  line-height: 1.2em;
+  color: #eee;
+  border-radius: 0 0.1em 0.1em 0;
+  left: 5em;
+  white-space: nowrap;
+  cursor: default;
+  -webkit-transform: rotate(-32deg);
+  -moz-transform: rotate(-32deg);
+  -ms-transform: rotate(-32deg);
+  transform: rotate(-32deg);
+}
+.planet .flag:before {
+  content: "";
+  position: absolute;
+  width: 0.2em;
+  height: 2.7em;
+  left: -0.1em;
+  top: 0;
+  background: #444;
+}
+.planet .rover {
+  position: absolute;
+  -webkit-transform: rotate(110deg);
+  -moz-transform: rotate(110deg);
+  -ms-transform: rotate(110deg);
+  transform: rotate(110deg);
+  left: 18.7em;
+  top: 4.8em;
+}
+.planet .rover .body {
+  position: absolute;
+  z-index: 99;
+  width: 0.9em;
+  height: 1.5em;
+  border-radius: 0.3em;
   background: #fff;
-  width: 75px;
-  height: 80px;
-  border-radius: 50% 50% 50% 50%/45px 45px 45% 45%;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+  box-shadow: -0.1em 0 0 0 #ccc;
 }
-meta::after {
-  content: '';
+.planet .rover .body:after {
+  content: "";
   position: absolute;
-  border-bottom: 2px solid #fff;
-  width: 70px;
-  height: 50px;
-  left: 0px;
-  bottom: -10px;
-  border-radius: 50%;
+  top: 0.4em;
+  left: 0.3em;
+  width: 0.5em;
+  height: 0.7em;
+  box-shadow: -0.2em -0.1em 0 0 #ccc;
 }
-meta::before {
-  bottom: auto;
-  top: -100px;
-  -webkit-transform: rotate(45deg);
-  transform: rotate(45deg);
+.planet .rover .wheels {
+  position: absolute;
+  left: -0.3em;
+}
+.planet .rover .wheels:after, .planet .rover .wheels:before {
+  content: "";
+  position: absolute;
+  z-index: 9;
+  background: #111;
+  width: 1.4em;
+  height: 0.6em;
+  border-radius: 0.2em;
+}
+.planet .rover .wheels:after {
+  top: 0.9em;
+}
+.planet .rover .wheels:before {
+  top: 0;
+}
+.planet .rover .trace {
+  position: absolute;
+  left: -0.6em;
+  top: 1.5em;
+  -webkit-transform: rotate(-24deg);
+  -moz-transform: rotate(-24deg);
+  -ms-transform: rotate(-24deg);
+  transform: rotate(-24deg);
+}
+.planet .rover .trace:before, .planet .rover .trace:after {
+  content: "";
+  position: absolute;
+  width: 1.2em;
+  height: 5em;
+  border-radius: 50%;
+  box-shadow: inset 0.2em 0.3em 0 0 #bebebe;
+}
+.planet .rover .trace:after {
   left: 0;
 }
-meta:nth-of-type(2) {
-  float: right;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-meta:nth-of-type(2)::after {
-  left: 5px;
-}
-meta:nth-of-type(3) {
-  display: none;
+.planet .rover .trace:before {
+  left: 1em;
 }
 
-body {
-  margin-top: 100px;
+.message {
+  position: absolute;
+  color: #ddd;
+  top: 44em;
+  width: 100%;
   text-align: center;
-  color: #fff;
+  cursor: default;
+  text-shadow: 0.1em 0.1em 0 #111;
 }
-body::before {
-  content: '404';
-  font-size: 80px;
-  font-weight: 800;
-  display: block;
-  margin-bottom: 10px;
-}
-body::after {
-  content: 'Got lost? How.....?  why.....?  Ahhhh....';
-  color: #1EA7AB;
-  width: 120px;
-  font-size: 30px;
-  overflow: hidden;
+.message p {
   display: inline-block;
-  white-space: nowrap;
-  -webkit-animation: text-show 2s infinite steps(3);
-  animation: text-show 2s infinite steps(3);
+  font-size: 1.6em;
 }
-@-webkit-keyframes eye {
-  0% ,30% , 55%, 90% , 100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  10%, 25% {
-    -webkit-transform: translate(0, 20px);
-    transform: translate(0, 20px);
-  }
-  65% {
-    -webkit-transform: translate(-20px, 0);
-    transform: translate(-20px, 0);
-  }
-  80% {
-    -webkit-transform: translate(20px, 0);
-    transform: translate(20px, 0);
-  }
-}
-@keyframes eye {
-  0% ,30% , 55%, 90% , 100% {
-    -webkit-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
-  10%, 25% {
-    -webkit-transform: translate(0, 20px);
-    transform: translate(0, 20px);
-  }
-  65% {
-    -webkit-transform: translate(-20px, 0);
-    transform: translate(-20px, 0);
-  }
-  80% {
-    -webkit-transform: translate(20px, 0);
-    transform: translate(20px, 0);
-  }
-}
-@-webkit-keyframes shvr {
-  0% {
-    -webkit-transform: translate(1px, 1em);
-    transform: translate(1px, 1em);
-  }
-  50% {
-    -webkit-transform: translate(0, 1em);
-    transform: translate(0, 1em);
-  }
-  100% {
-    -webkit-transform: translate(-1px, 1em);
-    transform: translate(-1px, 1em);
-  }
-}
-@keyframes shvr {
-  0% {
-    -webkit-transform: translate(1px, 1em);
-    transform: translate(1px, 1em);
-  }
-  50% {
-    -webkit-transform: translate(0, 1em);
-    transform: translate(0, 1em);
-  }
-  100% {
-    -webkit-transform: translate(-1px, 1em);
-    transform: translate(-1px, 1em);
-  }
-}
-@-webkit-keyframes text-show {
-  to {
-    text-indent: -373px;
-  }
-}
-@keyframes text-show {
-  to {
-    text-indent: -373px;
-  }
+.message p a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0.1rem dotted #999;
 }
