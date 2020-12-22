@@ -19,7 +19,9 @@ h1 {
 	margin: 0;
 	font-weight: 300;
 	font-size: 35px;
-	letter-spacing: -1px;
+	letter-spacing: 5px;
+	text-align: center;
+	border: 3px solid green;
 }
 h2 {
 	font-size: 15px;
@@ -47,6 +49,7 @@ p, .control-group {
 }
 .demo select, .demo input, .demo .selectize-control {
 	width: 100%;
+	border: 3px solid green;
 }
 .demo > *:first-child {
 	margin-top: 0;
