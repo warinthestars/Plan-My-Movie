@@ -27,13 +27,6 @@ $(function() {
 									console.log("rtset: " + detailsresponse.runtime);
 								}
 							});
-		
-		
-		
-		
-
 		}
-		
-		
 	});
 });
