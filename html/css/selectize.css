@@ -282,7 +282,7 @@
 .selectize-dropdown-content {
   overflow-y: auto;
   overflow-x: hidden;
-  max-height: 200px;
+  max-height: 400px;
   -webkit-overflow-scrolling: touch;
 }
 .selectize-control.single .selectize-input,
