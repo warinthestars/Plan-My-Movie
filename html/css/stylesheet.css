@@ -6,7 +6,7 @@ body {
 	color: #454545;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.02);
 	-webkit-font-smoothing: antialiased;
-	background: url(../images/hometheatrebg.jpg) no-repeat center center;
+	background: url(../assets/images/hometheatrebg.jpg) no-repeat center center; /* Kindly borrowed from Jeremy Yap from https://unsplash.com/photos/J39X2xX_8CQ */
 	 background-size: cover;
 	 background-attachment: fixed;
 	  display: grid;
