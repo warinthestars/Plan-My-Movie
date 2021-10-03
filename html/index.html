@@ -64,12 +64,21 @@
 							create: false,
 							render: {
 								option: function(item, escape) {
+								
+								var tmdbthumb;
+								
+								if (item.poster_path === null){
+								tmdbthumb = "assets/images/noart.png";
+								}else{
+								tmdbthumb = "https://image.tmdb.org/t/p/w92" + item.poster_path;
+								}
+								
 									return '<div>' +
-										'<img src="' + escape("https://image.tmdb.org/t/p/w92" + item.poster_path) + '" alt="">' +
+										'<img src="' + escape(tmdbthumb) + '" alt="">' +
 										'<span class="title">' +
 											'<span class="name">' + escape(item.title + " " + "(" + item.release_date + ")") + '</span>' +
 										'</span>' +
-										'<span class="description">' + escape(item.overview || '<i>No synopsis available at this time.') + '</span>'
+										'<span class="description">' + escape(item.overview || 'No synopsis available at this time.') + '</span>'
 									'</div>';
 								}
 							},

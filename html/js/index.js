@@ -52,4 +52,7 @@ $(function() {
 			return movieendtime;
 		}
 	});
+	
+	function
+	function
 });
