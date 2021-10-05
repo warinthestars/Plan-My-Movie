@@ -63,13 +63,7 @@ $(function() {
 		}
 	})
 })
-/*
-$(function() {
-	$('#timepickergo').datetimepicker({
-		controlType: 'select',
-		timeFormat: 'hh:mm tt'
-	})
-})*/
+
 $(function() {
 	
 	var $wrapper = document.getElementById('#wrapper');
@@ -135,3 +129,10 @@ $(function() {
 		}
 	});
 });
+
+$(function() {
+	$('#timepickergo').datetimepicker({
+		controlType: 'select',
+		timeFormat: 'hh:mm tt'
+	})
+})
