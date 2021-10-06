@@ -21,7 +21,8 @@ a:hover {
 	color: #008af5;
 }
 h1 {
-	margin: 0;
+	width: 70%;
+	margin: auto;
 	font-weight: 300;
 	font-size: 35px;
 	letter-spacing: 5px;
@@ -84,8 +85,8 @@ p, .control-group {
 	font-weight: bold;
 }
 #wrapper {
-	margin: 0em 20em;
 	width: 60em;
+	margin: auto;
 }
 #wrapper > * {
 	padding-left: 100px;
@@ -121,25 +122,6 @@ input[type=button]:hover {
 	background: #dadada;
 }
 
-@media only screen and (max-width : 320px) {
-	body {
-		margin: 20px 0;
-	}
-	#wrapper {
-		margin: 0em 20em;
-	}
-	#wrapper > * {
-		padding-left: 100px;
-		padding-right: 100px;
-	}
-	.demo {
-		padding: 20px;
-		-webkit-border-radius: 0;
-		-moz-border-radius: 0;
-		border-radius: 0;
-	}
-}
-
 .comeonjeffgetem {
   border: 1px solid #fff;
     border-radius: 15px;
@@ -147,7 +129,7 @@ input[type=button]:hover {
  margin: auto;
    position: relative;
      overflow: hidden;
-	  background-color: rgba(255, 255, 255, .35);  
+	  background-color: rgba(255, 255, 255, .55);  
  backdrop-filter: blur(5px);
  color: black;
  height: 600px;
@@ -163,4 +145,87 @@ input[type=button]:hover {
 
 #selectcustomtime, #calctime, #custcalctime, #displayrt, #localtime, #buttonregcalc, #buttoncustcalc {
 	display: none;
+}
+
+@media only screen and (max-width : 320px) {
+	h1{
+	margin: auto;
+	width: 90%;
+	display: block;
+	font-size: 25px;
+	text-align: center;
+	}
+	
+	body {
+		width: 100%;
+		display: block;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		min-height: 90vh;
+	}
+	#wrapper {
+		width: 95%;
+		margin: auto;
+		min-height: 90vh;
+	}
+	
+	#wrapper > * {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	
+	.comeonjeffgetem {
+		background-color: rgba(255, 255, 255, .55);  
+		min-height: 90vh;
+		height: 100%;
+	}
+	
+	.demo {
+		padding: 20px;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+	}
+}
+
+@media only screen and (min-width: 321px) and (max-width : 767px) {
+	h1{
+	margin: auto;
+	width: 90%;
+	display: block;
+	font-size: 25px;
+	text-align: center;
+	}
+	
+	body {
+		width: 100%;
+		display: block;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		min-height: 90vh;
+		
+	}
+	#wrapper {
+		width: 95%;
+		margin: auto;
+		min-height: 90vh;
+	}
+	
+	#wrapper > * {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	
+	.comeonjeffgetem {
+		background-color: rgba(255, 255, 255, .55);  
+		min-height: 90vh;
+		height: 100%;
+	}
+	
+	.demo {
+		padding: 20px;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+	}
 }
