@@ -67,7 +67,7 @@ $(function() {
 		load: function(query, callback) {
 			if (!query.length) return callback();
 			$.ajax({
-				url: 'https://api.planmymovie.workers.dev/3/search/movie/',
+				url: 'https://api.planmymovie.com/3/search/movie/',
 				type: 'GET',
 				dataType: 'jsonp',
 				data: {
@@ -105,7 +105,7 @@ $(function() {
 
 		function ajaxget(){
 			var jsonresult = $.ajax({
-				url: 'https://api.planmymovie.workers.dev/3/movie/?id=' + $input.val(),
+				url: 'https://api.planmymovie.com/3/movie/?id=' + $input.val(),
 				type: 'GET',
 				dataType: 'jsonp',
 				error: function() {
