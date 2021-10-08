@@ -69,7 +69,7 @@ $(function() {
 			$.ajax({
 				url: 'https://api.planmymovie.com/3/search/movie/',
 				type: 'GET',
-				dataType: 'jsonp',
+				dataType: 'json',
 				data: {
 					query: query,
 				},
@@ -107,7 +107,7 @@ $(function() {
 			var jsonresult = $.ajax({
 				url: 'https://api.planmymovie.com/3/movie/?id=' + $input.val(),
 				type: 'GET',
-				dataType: 'jsonp',
+				dataType: 'json',
 				error: function() {
 					console();
 				},
