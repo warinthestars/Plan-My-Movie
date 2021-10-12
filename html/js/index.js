@@ -67,12 +67,11 @@ $(function() {
 		load: function(query, callback) {
 			if (!query.length) return callback();
 			$.ajax({
-				url: 'https://api.themoviedb.org/3/search/movie?api_key=3634a680b1c4dff46bdba60a88625d55&language=en-US&include_adult=false',
+				url: 'https://api.planmymovie.com/3/search/movie/',
 				type: 'GET',
-				dataType: 'jsonp',
+				dataType: 'json',
 				data: {
 					query: query,
-					page_limit: 10,
 				},
 				error: function() {
 					callback();
@@ -106,9 +105,9 @@ $(function() {
 
 		function ajaxget(){
 			var jsonresult = $.ajax({
-				url: 'https://api.themoviedb.org/3/movie/' + $input.val() + '?api_key=3634a680b1c4dff46bdba60a88625d55&language=en-US',
+				url: 'https://api.planmymovie.com/3/movie/?id=' + $input.val(),
 				type: 'GET',
-				dataType: 'jsonp',
+				dataType: 'json',
 				error: function() {
 					console();
 				},
