@@ -2,35 +2,39 @@
 <!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
 <!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
 <!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
-	<head>
-		<title>Plan My Movie</title>
-		<html lang="en-US">
-		<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-		<link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-		
-		<meta name="Description" content="Plan Your Movie">
-	
-		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
-		<link rel="stylesheet" href="css/normalize.css">
-		<link rel="stylesheet" href="css/stylesheet.css">
-		<link rel="stylesheet" href="css/selectize.css">
-		<link rel="stylesheet" href="css/overrideselectizestyling.css">
-		<link rel="stylesheet" href="css/jquery-ui.css">
-		<link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
-		<!--[if IE 8]><script src="js/es5.js"></script><![endif]-->
-		<script src="js/jquery.min.js"></script>
-		<script src="js/standalone/selectize.js"></script>
-		<script src="js/jquery-ui.js"></script>
-		<script src="js/jquery-ui-timepicker-addon.js"></script>
-		<script src="js/index.js"></script>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-	</head>
-    <body>
+<head>
+	<title>Plan My Movie</title>
+	<html lang="en-US">
+	<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+
+	<meta name="Description" content="Plan Your Movie">
+
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/stylesheet.css">
+	<link rel="stylesheet" href="css/selectize.css">
+	<link rel="stylesheet" href="css/overrideselectizestyling.css">
+	<link rel="stylesheet" href="css/jquery-ui.css">
+	<link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
+	<!--[if IE 8]><script src="js/es5.js"></script><![endif]-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/standalone/selectize.js"></script>
+	<script src="js/jquery-ui.js"></script>
+	<script src="js/jquery-ui-timepicker-addon.js"></script>
+	<script src="js/index.js"></script>
+
+</head>
+
+<body>
 	<h1>PLAN MY MOVIE</h1>
 	<div>
 		<div id="wrapper">
@@ -42,39 +46,56 @@
 						<select id="select-movie" class="movies" placeholder="Find a movie..."></select>
 					</div>
 					<form>Select a way to plan:
-					<input type="radio" id="currenttime" name="timetype" value="Use Current Time" onclick="timeCheck()">
-					<label for="usecurrenttime">Use Current Time</label>
-					<input type="radio" id="customtime" name="timetype" value="Use Custom Time" onclick="timeCheck()">
-					<label for="customtime">Use Custom Time</label><br>					
-					</input>
+						<input type="radio" id="currenttime" name="timetype" value="Use Current Time"
+							onclick="timeCheck()">
+						<label for="usecurrenttime">Use Current Time</label>
+						<input type="radio" id="customtime" name="timetype" value="Use Custom Time"
+							onclick="timeCheck()">
+						<label for="customtime">Use Custom Time</label><br>
+						</input>
 					</form>
 					<br>
 					<div id="localtime">
-					Current Time:
-					<br><br>
+						Current Time:
+						<br><br>
 					</div>
 					<div id="selectcustomtime">
-					Select a Time:
-					<input id="timepickergo"></input>
-					<br><br>
+						Select a Time:
+						<input id="timepickergo"></input>
+						<br><br>
 					</div>
 					<div id="displayrt">
-					Movie Run-Time:
-					<br><br>
+						Movie Run-Time:
+						<br><br>
 					</div>
 					<div id="calctime">
-					Calculated Movie End Time:
-					<br><br>
+						Calculated Movie End Time:
+						<br><br>
 					</div>
 					<input type="button" id="buttonregcalc" onclick="calctimereg()" value="Calculate Movie End Time" />
 					<div id="custcalctime">
-					Calculated Movie End Time:
-					<br><br>
+						Calculated Movie End Time:
+						<br><br>
 					</div>
-					<input type="button" id="buttoncustcalc" onclick="calctimecust()" value="Calculate Movie End Time" />
+					<input type="button" id="buttoncustcalc" onclick="calctimecust()"
+						value="Calculate Movie End Time" />
 				</div>
 			</div>
 		</div>
-		</div>
-	</body>
+	</div>
+
+	<div id="issue-embed"></div>
+<script src="https://cdn.issueembed.dev/v1/issue-embed.min.js"></script>
+<script>
+	issueEmbed.init(
+		"#issue-embed",
+		{
+			"key": "89ea17d9-8f6f-4f1f-9f69-3bf90a4e2f00"
+		}
+	);
+</script>
+
+
+</body>
+
 </html>
