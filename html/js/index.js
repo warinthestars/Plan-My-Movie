@@ -90,9 +90,9 @@ $(function() {
 	var $wrapper = document.getElementById('#wrapper');
 	// show current input values
 	$('select.selectized,input.selectized', $wrapper).each(function() {
-		console.log("aaaaaaa")
-		var $idcontainer = $('<div>').addClass('value').html('Current Value: ');
-		var $value = $('<span>').appendTo($idcontainer);
+		console.log("Selectize Initialized")
+		var $idcontainer = $('<div style="display:none">').addClass('value').html('Current Value: ');
+		var $value = $('<span>').appendTo($idcontainer); 
 		var $input = $(this);
 		var update = function(e) { $value.text(JSON.stringify($input.val())); }
 		$(this).on('change', update);
