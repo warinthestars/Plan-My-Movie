@@ -8,7 +8,7 @@ Plan My Movie is actively developed by stonefrango and warinthestars.
 
 ## Thanks and Attributions
 * [Background: Jeremy Yap on Unsplash](https://unsplash.com/photos/J39X2xX_8CQ)
-* [API data and movie logos: The Movie DB](www.themoviedb.org/)
+* [API data and movie logos: The Movie DB](https://www.themoviedb.org/)
 
 ### Special Thanks
 * The many, many online help forum discussions that helped piece together everything.
