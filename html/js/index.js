@@ -112,10 +112,21 @@ $(function() {
 					console();
 				},
 				success: function(detailsresponse) {
+					
+					movietitle = detailsresponse.title;
+					document.getElementById("selectedmoviename").innerHTML = movietitle;
 					movieruntime = detailsresponse.runtime;
+					posterpath = detailsresponse.poster_path;
+					releasedate = detailsresponse.release_date;
+					document.getElementById("selectedmoviedate").innerHTML = releasedate;
+					synoposis = detailsresponse.overview;
+					document.getElementById("selectedmoviesynopsis").innerHTML = synoposis;
+					
 					console.log(detailsresponse);
 					document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movieruntime) + '<br><br>';
 					console.log("movie run time: " + movieruntime);
+					
+					
 					
 				}
 			});
