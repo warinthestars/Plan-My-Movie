@@ -28,6 +28,10 @@ async function handleRequest(req) {
                     const apiSearchParams = new URLSearchParams(urlForSearch.search);
                     const movieID = apiSearchParams.get("id");
                     return new URL(URLDETAILS + "/" + movieID);
+                }else if(pathname == "/3/movie/credits/") {
+                    const apiSearchParams = new URLSearchParams(urlForSearch.search);
+                    const movieID = apiSearchParams.get("id");
+                    return new URL(URLDETAILS + "/" + movieID + "/credits")
                 }else{
                 }
             };
@@ -38,6 +42,8 @@ async function handleRequest(req) {
                         const myQuery = querySearchParam.get('query');
                         ([[API_KEY, "api_key"], [myQuery, "query"], ["en-US", "language"], ["false", "include-adult"], [10, "page_limit"]]).forEach(([value, key]) => {urlAPI.searchParams.append(key, value);}); 
                 }else if(pathname == "/3/movie/") {
+                        ([[API_KEY, "api_key"], ["en-US", "language"]]).forEach(([value, key]) => {urlAPI.searchParams.append(key, value);});
+                }else if(pathname == "/3/movie/credits/") {
                         ([[API_KEY, "api_key"], ["en-US", "language"]]).forEach(([value, key]) => {urlAPI.searchParams.append(key, value);});
                 }else{
                 }

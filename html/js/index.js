@@ -130,6 +130,40 @@ $(function() {
 					
 				}
 			});
+			var getcast = $.ajax({
+				url: 'https://api.planmymovie.com/3/movie/credits/?id=' + $input.val(),
+				type: 'GET',
+				dataType: 'json',
+				error: function() {
+					console();
+				},
+				success: function(castresponse) {
+					
+					console.log(castresponse);
+
+					var uhidk;
+					
+					try {
+					uhidk = castresponse.cast[0].name + " as " + castresponse.cast[0].character + "<br>";
+					
+					for (var i=1; i<5 && i<castresponse.cast.length; i++) {
+						uhidk = uhidk + castresponse.cast[i].name + " as " + castresponse.cast[i].character + "<br>";
+
+					}
+					
+					
+					} catch (e) {
+						var uhidk = "No Cast Information Available.";
+					}
+					
+
+					
+					document.getElementById("selectedmoviecast").innerHTML = uhidk;
+					
+					
+				}
+			});
+			
 		}
 	});
 });
