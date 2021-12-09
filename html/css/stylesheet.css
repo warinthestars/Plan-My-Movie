@@ -178,9 +178,15 @@ footer:before {
 #moviename{
 	float: left;
 	padding-right: 30px;
+}
 
 #textselection{
 	overflow: hidden;
+}
+
+#sectionidk {
+	border-radius: 10px;
+	border: 1px solid #000;
 }
 
 @media only screen and (max-width : 320px) {
