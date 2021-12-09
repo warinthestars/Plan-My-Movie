@@ -15,7 +15,7 @@ Plan My Movie is actively developed by stonefrango and warinthestars.
 * Caffeine
 
 ## Dependencies
-* jQuery and jQueryUI
+* jQuery and [jQueryUI](https://jqueryui.com)
 * [jQueryUI Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
 * [Selectize](https://github.com/selectize/selectize.js)
 
