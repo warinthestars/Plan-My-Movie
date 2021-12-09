@@ -83,7 +83,7 @@ p, .control-group {
 	font-weight: bold;
 }
 #wrapper {
-	width: 60em;
+	width: 70em;
 	margin: auto;
 }
 #wrapper > * {
@@ -168,6 +168,19 @@ footer:before {
 
 #selectcustomtime, #calctime, #custcalctime, #displayrt, #localtime, #buttonregcalc, #buttoncustcalc {
 	display: none;
+}
+
+#display-poster{
+	float: left;
+	padding-right: 15px;
+}
+
+#moviename{
+	float: left;
+	padding-right: 30px;
+
+#textselection{
+	overflow: hidden;
 }
 
 @media only screen and (max-width : 320px) {

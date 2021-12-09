@@ -116,7 +116,12 @@ $(function() {
 					movietitle = detailsresponse.title;
 					document.getElementById("selectedmoviename").innerHTML = movietitle;
 					movieruntime = detailsresponse.runtime;
-					posterpath = detailsresponse.poster_path;
+					if (detailsresponse.poster_path === null){
+						posterpath = "assets/images/noart250w.png";
+					}else{
+						posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
+					}
+					document.getElementById("selectedmovieposterimg").src=posterpath;
 					releasedate = detailsresponse.release_date;
 					document.getElementById("selectedmoviedate").innerHTML = releasedate;
 					synoposis = detailsresponse.overview;
