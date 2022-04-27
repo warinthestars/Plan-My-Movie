@@ -83,7 +83,7 @@ p, .control-group {
 	font-weight: bold;
 }
 #wrapper {
-	width: 60em;
+	width: 70em;
 	margin: auto;
 }
 #wrapper > * {
@@ -161,13 +161,31 @@ footer:before {
 }
 
 #tmdb-logo {
-	url(../assets/images/tmdblogo.svg);
 	height: 13px;
 	display: inline-block;
 }
 
-#selectcustomtime, #calctime, #custcalctime, #displayrt, #localtime, #buttonregcalc, #buttoncustcalc {
+#calctime, #localtime, #buttonregcalc {
 	display: none;
+}
+
+#display-poster{
+	float: left;
+	padding-right: 15px;
+}
+
+#moviename{
+	float: left;
+	padding-right: 30px;
+}
+
+#textselection{
+	overflow: hidden;
+}
+
+#sectionidk {
+	border-radius: 10px;
+	border: 1px solid #000;
 }
 
 @media only screen and (max-width : 320px) {
