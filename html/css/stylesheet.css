@@ -166,7 +166,7 @@ footer:before {
 	display: inline-block;
 }
 
-#selectcustomtime, #calctime, #custcalctime, #displayrt, #localtime, #buttonregcalc, #buttoncustcalc {
+#calctime, #localtime, #buttonregcalc {
 	display: none;
 }
 

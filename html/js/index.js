@@ -5,13 +5,10 @@ var movieruntime;
 function timeCheck() {
 if (document.getElementById('currenttime').checked) {
 	
-	document.getElementById('localtime').style.display = 'block';
 	document.getElementById('selectcustomtime').style.display = 'none';
 	document.getElementById('displayrt').style.display = 'block';
-	document.getElementById('calctime').style.display = 'block';
 	document.getElementById('custcalctime').style.display = 'none';
 //	document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + '<br><br>';
-	document.getElementById("localtime").innerHTML = 'Current Time: ' + getLocaltime() + '<br><br>';
 	document.getElementById("calctime").innerHTML = 'Calculated Movie End Time: ' + '<br><br>';
 	document.getElementById('select-movie').value = '';
 	document.getElementById('buttonregcalc').style.display = 'block';
@@ -20,8 +17,6 @@ if (document.getElementById('currenttime').checked) {
 	console.log("selected movie runtime: " + movieruntime);
 	
 } else {
-	document.getElementById('localtime').style.display = 'none';
-	document.getElementById('calctime').style.display = 'none';
 	document.getElementById('displayrt').style.display = 'block';
 	document.getElementById('custcalctime').style.display = 'block';
 	document.getElementById('selectcustomtime').style.display = 'block';
@@ -33,6 +28,11 @@ if (document.getElementById('currenttime').checked) {
 	document.getElementById('buttoncustcalc').style.display = 'block';
 	
 }}
+
+$(function() {
+	document.getElementById("timepickergo").value = getLocaltime();
+}
+)
 
 $(function() {
 	
