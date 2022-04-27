@@ -161,7 +161,6 @@ footer:before {
 }
 
 #tmdb-logo {
-	url(../assets/images/tmdblogo.svg);
 	height: 13px;
 	display: inline-block;
 }

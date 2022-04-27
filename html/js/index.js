@@ -2,32 +2,30 @@ var currenttime;
 var movieendtime;
 var movieruntime;
 
-function timeCheck() {
+/* function timeCheck() {
 if (document.getElementById('currenttime').checked) {
 	
 	document.getElementById('selectcustomtime').style.display = 'none';
 	document.getElementById('displayrt').style.display = 'block';
 	document.getElementById('custcalctime').style.display = 'none';
-//	document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + '<br><br>';
 	document.getElementById("calctime").innerHTML = 'Calculated Movie End Time: ' + '<br><br>';
 	document.getElementById('select-movie').value = '';
 	document.getElementById('buttonregcalc').style.display = 'block';
 	document.getElementById('buttoncustcalc').style.display = 'none';
-	console.log("current time: " + getLocaltime());
+	console.log("current date and time: " + getLocaltime());
 	console.log("selected movie runtime: " + movieruntime);
 	
 } else {
 	document.getElementById('displayrt').style.display = 'block';
 	document.getElementById('custcalctime').style.display = 'block';
 	document.getElementById('selectcustomtime').style.display = 'block';
-//	document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + '<br><br>';
 	document.getElementById('timepickergo').value = '';
 	document.getElementById('custcalctime').innerHTML = 'Calculated Movie End Time:' + '<br><br>';
 	document.getElementById('select-movie').value = '';
 	document.getElementById('buttonregcalc').style.display = 'none';
 	document.getElementById('buttoncustcalc').style.display = 'block';
 	
-}}
+}} */
 
 $(function() {
 	document.getElementById("timepickergo").value = getLocaltime();
@@ -176,13 +174,18 @@ $(function() {
 $(function() {
 	$('#timepickergo').datetimepicker({
 		controlType: 'select',
-		timeFormat: "hh:mm tt"
+		timeFormat: "h:mm TT",
+		timeInput: true,
+		parse: "loose",
+		alwaysSetTime: true
+
 	})
 })
 
 function getLocaltime(){
-	currenttime = new Date();
-	return currenttime.toLocaleString();
+	currenttime = new Date().toLocaleString();
+	result = currenttime.replace(',', '');
+	return result;
 }
 
 function calctimereg(){
@@ -226,4 +229,8 @@ function addMinutesCust(date, minutes) {
 	moviecustendtime = new Date(+date + minutes*60000);
 	console.log("movie end time: " + moviecustendtime.toLocaleString());
 	return moviecustendtime;
+}
+
+function setSystemtime() {
+	document.getElementById("timepickergo").value = getLocaltime();
 }
