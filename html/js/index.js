@@ -12,9 +12,6 @@ $(function () {
 })
 
 $(function () {
-
-	var idforgetdetails;
-
 	$('#select-movie').selectize({
 		valueField: 'id',
 		labelField: 'title',
@@ -74,14 +71,15 @@ $(function () {
 		var update = function (e) { $value.text(JSON.stringify($input.val())); }
 		$(this).on('change', update);
 		update();
-		$(this).on('change', ajaxget);
+		$(this).on('change', getMovieDetails);
 
 		$idcontainer.insertAfter($input);
 
-		var $idforgetdetails = $value.text(JSON.stringify($input.val()));
+		$value.text(JSON.stringify($input.val()));
 
-		function ajaxget() {
-			var jsonresult = $.ajax({
+		// TO-DO: Merge internal "getMovieDetails" and global "getMovieDetails" into one function
+		function getMovieDetails() {
+			$.ajax({
 				url: 'https://api.planmymovie.com/3/movie/?id=' + $input.val(),
 				type: 'GET',
 				dataType: 'json',
@@ -118,7 +116,7 @@ $(function () {
 					console.log("movie run time: " + movieruntime);
 				}
 			});
-			var getcast = $.ajax({
+			$.ajax({
 				url: 'https://api.planmymovie.com/3/movie/credits/?id=' + $input.val(),
 				type: 'GET',
 				dataType: 'json',
@@ -228,11 +226,11 @@ function checkForURLParams() {
 	var urlParams = new URLSearchParams(urlForIdParam);
 	var idParam = urlParams.get('id');
 	console.log(idParam);
-	ajaxget(idParam);
+	getMovieDetails(idParam);
 }
 
-function ajaxget(id) {
-	var jsonresult = $.ajax({
+function getMovieDetails(id) {
+	$.ajax({
 		url: 'https://api.planmymovie.com/3/movie/?id=' + id,
 		type: 'GET',
 		dataType: 'json',
@@ -266,7 +264,7 @@ function ajaxget(id) {
 			console.log("movie run time: " + movieruntime);
 		}
 	});
-	var getcast = $.ajax({
+	$.ajax({
 		url: 'https://api.planmymovie.com/3/movie/credits/?id=' + id,
 		type: 'GET',
 		dataType: 'json',
@@ -293,7 +291,3 @@ function ajaxget(id) {
 		}
 	})
 };
-
-function updatebg() {
-
-}
