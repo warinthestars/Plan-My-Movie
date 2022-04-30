@@ -43,8 +43,8 @@ p, .control-group {
 }
 .demo {
 	border-bottom: 1px solid #e8e8e8;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -87,8 +87,8 @@ p, .control-group {
 	margin: auto;
 }
 #wrapper > * {
-	padding-left: 100px;
-	padding-right: 100px;
+	padding-left: 75px;
+	padding-right: 75px;
 }
 pre {
 	background: #f8f8f8;
@@ -186,6 +186,11 @@ footer:before {
 #sectionidk {
 	border-radius: 10px;
 	border: 1px solid #000;
+}
+
+#selectedmoviesynopsis {
+	height: 50px;
+	overflow: auto;
 }
 
 @media only screen and (max-width : 320px) {
