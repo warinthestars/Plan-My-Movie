@@ -104,8 +104,9 @@ $(function () {
 						backdroppath = "assets/images/hometheatrebg.jpg";
 					} else {
 						backdroppath = "https://image.tmdb.org/t/p/original" + detailsresponse.backdrop_path;
+						document.body.style.background = "url('" + backdroppath + "') no-repeat center fixed";
+						document.body.style.backgroundSize = "contain";
 					}
-					document.body.style.background = "url('" + backdroppath + "')";
 					console.log("backdrop path is" + backdroppath);
 					releasedate = detailsresponse.release_date;
 					document.getElementById("selectedmoviedate").innerHTML = releasedate;
@@ -251,8 +252,9 @@ function ajaxget(id) {
 				backdroppath = "assets/images/hometheatrebg.jpg";
 			} else {
 				backdroppath = "https://image.tmdb.org/t/p/original" + detailsresponse.backdrop_path;
+				document.body.style.background = "url('" + backdroppath + "') no-repeat center fixed";
+				document.body.style.backgroundSize = "contain";
 			}
-			document.body.style.background = "url('" + backdroppath + "')";
 			console.log("backdrop path is" + backdroppath);
 			releasedate = detailsresponse.release_date;
 			document.getElementById("selectedmoviedate").innerHTML = releasedate;
