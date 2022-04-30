@@ -4,6 +4,10 @@ var movieruntime;
 var currentmovieid = 683970; // hehe
 
 $(function () {
+	checkForURLParams();
+})
+
+$(function () {
 	document.getElementById("timepickergo").value = getLocaltime();
 })
 
@@ -96,6 +100,12 @@ $(function () {
 						posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
 					}
 					document.getElementById("selectedmovieposterimg").src = posterpath;
+/* 					if (detailsresponse.poster_path === null) {
+						posterpath = "assets/images/noart250w.png";
+					} else {
+						posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
+					}
+					document.getElementById("selectedmovieposterimg").src = posterpath; */
 					releasedate = detailsresponse.release_date;
 					document.getElementById("selectedmoviedate").innerHTML = releasedate;
 					synoposis = detailsresponse.overview;
@@ -104,9 +114,6 @@ $(function () {
 					console.log(detailsresponse);
 					document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movieruntime) + '<br><br>';
 					console.log("movie run time: " + movieruntime);
-
-
-
 				}
 			});
 			var getcast = $.ajax({
@@ -130,15 +137,11 @@ $(function () {
 
 						}
 
-
 					} catch (e) {
 						var uhidk = "No Cast Information Available.";
 					}
 
-
-
 					document.getElementById("selectedmoviecast").innerHTML = uhidk;
-
 
 				}
 			});
@@ -217,3 +220,72 @@ function copyToclip() {
 	navigator.clipboard.writeText("https://dev.planmymovie.com/?id=" + currentmovieid);
 	console.log(currentmovieid);
 }
+
+function checkForURLParams() {
+	var urlForIdParam = window.location.search;
+	var urlParams = new URLSearchParams(urlForIdParam);
+	var idParam = urlParams.get('id');
+	console.log(idParam);
+	ajaxget(idParam);
+}
+
+function ajaxget(id) {
+	var jsonresult = $.ajax({
+		url: 'https://api.planmymovie.com/3/movie/?id=' + id,
+		type: 'GET',
+		dataType: 'json',
+		success: function (detailsresponse) {
+			
+			currentmovieid = detailsresponse.id;
+			movietitle = detailsresponse.title;
+			document.getElementById("selectedmoviename").innerHTML = movietitle;
+			movieruntime = detailsresponse.runtime;
+			if (detailsresponse.poster_path === null) {
+				posterpath = "assets/images/noart250w.png";
+			} else {
+				posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
+			}
+			document.getElementById("selectedmovieposterimg").src = posterpath;
+/* 					if (detailsresponse.poster_path === null) {
+				posterpath = "assets/images/noart250w.png";
+			} else {
+				posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
+			}
+			document.getElementById("selectedmovieposterimg").src = posterpath; */
+			releasedate = detailsresponse.release_date;
+			document.getElementById("selectedmoviedate").innerHTML = releasedate;
+			synoposis = detailsresponse.overview;
+			document.getElementById("selectedmoviesynopsis").innerHTML = synoposis;
+
+			console.log(detailsresponse);
+			document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movieruntime) + '<br><br>';
+			console.log("movie run time: " + movieruntime);
+		}
+	});
+	var getcast = $.ajax({
+		url: 'https://api.planmymovie.com/3/movie/credits/?id=' + id,
+		type: 'GET',
+		dataType: 'json',
+		success: function (castresponse) {
+
+			console.log(castresponse);
+
+			var uhidk;
+
+			try {
+				uhidk = castresponse.cast[0].name + " as " + castresponse.cast[0].character + "<br>";
+
+				for (var i = 1; i < 5 && i < castresponse.cast.length; i++) {
+					uhidk = uhidk + castresponse.cast[i].name + " as " + castresponse.cast[i].character + "<br>";
+
+				}
+
+			} catch (e) {
+				var uhidk = "No Cast Information Available.";
+			}
+
+			document.getElementById("selectedmoviecast").innerHTML = uhidk;
+
+		}
+	})
+};

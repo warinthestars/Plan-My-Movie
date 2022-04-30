@@ -70,20 +70,10 @@
 						</div>
 					</div>
 					<br>
-					<!-- 						<form>Select a way to plan:
-							<input type="radio" id="currenttime" name="timetype" value="Use Current Time" onclick="timeCheck()">
-							<label for="usecurrenttime">Use Current Time</label>
-							<input type="radio" id="customtime" name="timetype" value="Use Custom Time" onclick="timeCheck()">
-							<label for="customtime">Use Custom Time</label><br>
-							</input>
-						</form> -->
-					<br>
+					<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
+					<br><br>
 					<fieldset id="sectionidk">
 						<legend>Pick a Time</legend>
-						<!--						<div id="localtime">
-							Current Time:
-							<br><br>
-						</div> -->
 						<div id="selectcustomtime">
 							Select a Time:
 							<input id="timepickergo"></input> <button id="resettime" onclick="setSystemtime()">Use
@@ -94,10 +84,6 @@
 							Movie Run-Time:
 							<br><br>
 						</div>
-						<!-- 						<div id="calctime">
-							Calculated Movie End Time:
-							<br><br>
-						</div> -->
 						<input type="button" id="buttonregcalc" onclick="calctimereg()"
 							value="Calculate Movie End Time" />
 						<div id="custcalctime">
@@ -108,7 +94,6 @@
 							value="Calculate Movie End Time" />
 					</fieldset>
 					<br>
-					<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
 				</div>
 			</div>
 		</div>
