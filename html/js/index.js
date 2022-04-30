@@ -37,7 +37,7 @@ $(function () {
 					'<span class="title">' +
 					'<span class="name">' + escape(item.title + " " + "(" + item.release_date + ")") + '</span>' +
 					'</span>' +
-					'<span class="description">' + escape(item.overview || 'No synopsis available at this time.') + '</span>'
+					'<span class="description">' + escape(item.overview || 'No synopsis available at this time.') + '</span>' +
 				'</div>';
 			}
 		},
@@ -100,12 +100,13 @@ $(function () {
 						posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
 					}
 					document.getElementById("selectedmovieposterimg").src = posterpath;
-/* 					if (detailsresponse.poster_path === null) {
-						posterpath = "assets/images/noart250w.png";
+					if (detailsresponse.backdrop_path === null) {
+						backdroppath = "assets/images/hometheatrebg.jpg";
 					} else {
-						posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
+						backdroppath = "https://image.tmdb.org/t/p/original" + detailsresponse.backdrop_path;
 					}
-					document.getElementById("selectedmovieposterimg").src = posterpath; */
+					document.body.style.background = "url('" + backdroppath + "')";
+					console.log("backdrop path is" + backdroppath);
 					releasedate = detailsresponse.release_date;
 					document.getElementById("selectedmoviedate").innerHTML = releasedate;
 					synoposis = detailsresponse.overview;
@@ -246,12 +247,13 @@ function ajaxget(id) {
 				posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
 			}
 			document.getElementById("selectedmovieposterimg").src = posterpath;
-/* 					if (detailsresponse.poster_path === null) {
-				posterpath = "assets/images/noart250w.png";
+			if (detailsresponse.backdrop_path === null) {
+				backdroppath = "assets/images/hometheatrebg.jpg";
 			} else {
-				posterpath = "https://image.tmdb.org/t/p/w500" + detailsresponse.poster_path;
+				backdroppath = "https://image.tmdb.org/t/p/original" + detailsresponse.backdrop_path;
 			}
-			document.getElementById("selectedmovieposterimg").src = posterpath; */
+			document.body.style.background = "url('" + backdroppath + "')";
+			console.log("backdrop path is" + backdroppath);
 			releasedate = detailsresponse.release_date;
 			document.getElementById("selectedmoviedate").innerHTML = releasedate;
 			synoposis = detailsresponse.overview;
@@ -289,3 +291,7 @@ function ajaxget(id) {
 		}
 	})
 };
+
+function updatebg() {
+
+}
