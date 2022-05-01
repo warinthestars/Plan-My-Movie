@@ -8,7 +8,7 @@ $(function () {
 })
 
 $(function () {
-	document.getElementById("timepickergo").value = getLocaltime();
+	document.getElementById("timepickergo").value = getLocalTime();
 })
 
 $(function () {
@@ -65,7 +65,7 @@ $(function () {
 	// show current input values
 	$('select.selectized,input.selectized', $wrapper).each(function () {
 		console.log("Selectize Initialized")
-		var $idcontainer = $('<div style="display:none">').addClass('value').html('Current Value: ');
+		var $idcontainer = $('<div style="display:none">').addClass('value').html('Current Value: '); // TO-DO: Remove this line without breaking everything
 		var $value = $('<span>').appendTo($idcontainer);
 		var $input = $(this);
 		var update = function (e) { $value.text(JSON.stringify($input.val())); }
@@ -161,21 +161,13 @@ $(function () {
 	})
 })
 
-function getLocaltime() {
+function getLocalTime() {
 	currentTime = new Date().toLocaleString();
 	result = currentTime.replace(',', '');
 	return result;
 }
 
-function calctimereg() {
-	if (movieRunTime === void 0) {
-		document.getElementById("calctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and try again!' + '<br><br>';
-	} else {
-		document.getElementById("calctime").innerHTML = 'Calculated Movie End Time: ' + addMinutes(currentTime, movieRunTime).toLocaleString() + '<br><br>';
-	}
-}
-
-function calctimecust() {
+function calcTime() {
 
 	var timeValue = $('#timepickergo').datetimepicker('getDate');
 
@@ -189,7 +181,6 @@ function calctimecust() {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and time and try again!' + '<br><br>';
 		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else {
-
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + addMinutesCust(timeValue, movieRunTime).toLocaleString() + '<br><br>';
 	}
 }
@@ -197,7 +188,19 @@ function calctimecust() {
 var timeConvert = function (n) {
 	var minutes = n % 60;
 	var hours = (n - minutes) / 60;
-	return hours + " hour(s) and " + minutes + " minute(s)";
+	var minutesPlurality;
+	var hoursPlurality;
+	if (minutes == 1) {
+		minutesPlurality = "minute"
+	} else {
+		minutesPlurality = "minutes"
+	}
+	if (hours == 1) {
+		hoursPlurality = "hour"
+	} else {
+		hoursPlurality = "hours"
+	}
+	return hours + " " + hoursPlurality + " and " + minutes + " " + minutesPlurality;
 }
 
 function addMinutes(date, minutes) {
@@ -206,14 +209,8 @@ function addMinutes(date, minutes) {
 	return movieEndTime;
 }
 
-function addMinutesCust(date, minutes) {
-	moviecustendtime = new Date(+date + minutes * 60000);
-	console.log("movie end time: " + moviecustendtime.toLocaleString());
-	return moviecustendtime;
-}
-
 function setSystemtime() {
-	document.getElementById("timepickergo").value = getLocaltime();
+	document.getElementById("timepickergo").value = getLocalTime();
 }
 
 function copyToclip() {
