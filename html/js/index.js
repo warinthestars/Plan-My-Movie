@@ -183,10 +183,10 @@ function calctimecust() {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and try again!' + '<br><br>';
 		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else if (timeValue === null && movieRunTime !== void 0) {
-		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a custom time and try again!' + '<br><br>';
+		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a time and try again!' + '<br><br>';
 		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else if (movieRunTime === void 0 && timeValue === null) {
-		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and custom time and try again!' + '<br><br>';
+		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and time and try again!' + '<br><br>';
 		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else {
 
