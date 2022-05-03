@@ -180,7 +180,7 @@ function calcTime() {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and time and try again!' + '<br><br>';
 		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else {
-		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + addMinutesCust(timeValue, movieRunTime).toLocaleString() + '<br><br>';
+		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + addMinutes(timeValue, movieRunTime).toLocaleString() + '<br><br>';
 	}
 }
 
