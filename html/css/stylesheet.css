@@ -1,5 +1,5 @@
 body {
-	margin: 70px 0;
+	margin: 55px 0 0 0;
 	padding: 0;
 	font-family: Helvetica, arial, sans-serif;
 	font-size: 15px;
@@ -43,7 +43,7 @@ p, .control-group {
 }
 .demo {
 	border-bottom: 1px solid #e8e8e8;
-	padding-top: 40px;
+	padding-top: 30px;
 	padding-bottom: 40px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
@@ -130,7 +130,7 @@ input[type=button]:hover {
 	background-color: rgba(255, 255, 255, .55);  
 	backdrop-filter: blur(5px);
 	color: black;
-	height: 600px;
+	height: 75vh;
 }
 
 .comeonjeffgetem:before {
@@ -191,6 +191,10 @@ footer:before {
 #selectedmoviesynopsis {
 	height: 50px;
 	overflow: auto;
+}
+
+#bold {
+	font-weight: bold;
 }
 
 @media only screen and (max-width : 320px) {

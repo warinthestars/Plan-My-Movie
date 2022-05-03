@@ -48,32 +48,13 @@
 			<div class="comeonjeffgetem">
 				<div class="demo">
 					<div class="control-group">
-						<label for="select-movie">Select a Movie:</label>
-						<select id="select-movie" class="movies" placeholder="Find a movie..."></select>
+						<fieldset id="sectionidk">
+							<legend id="bold">Select a Movie</legend>
+							<select id="select-movie" class="movies" placeholder="Find a movie..."></select>
+						</fieldset>
 					</div>
-					<div id="display-results">
-						<div id="display-poster"><img id="selectedmovieposterimg" width="300"
-								src="assets/images/noselection250w.png"></div>
-						<div id="textselection">
-							<div id="moviename"><b>Name: </b>
-								<div id="selectedmoviename"></div>
-							</div>
-							<div id="release"><b>Release Date: </b>
-								<div id="selectedmoviedate"></div>
-							</div><br>
-							<div id="synopsis"><b>Synopsis: </b>
-								<div id="selectedmoviesynopsis"></div>
-							</div><br>
-							<div id="cast"><b>Cast: </b>
-								<div id="selectedmoviecast"></div>
-							</div>
-						</div>
-					</div>
-					<br>
-					<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
-					<br><br>
 					<fieldset id="sectionidk">
-						<legend>Pick a Time</legend>
+						<legend id="bold">Pick a Time</legend>
 						<div id="selectcustomtime">
 							Select a Time:
 							<input id="timepickergo"></input> <button id="resettime" onclick="setSystemtime()">Use
@@ -92,6 +73,26 @@
 							value="Calculate Movie End Time" />
 					</fieldset>
 					<br>
+					<div id="display-results">
+						<div id="display-poster"><img id="selectedmovieposterimg" width="250"
+								src="assets/images/noselection250w.png"></div>
+						<div id="textselection">
+							<div id="moviename"><b>Name: </b>
+								<div id="selectedmoviename"></div>
+							</div>
+							<div id="release"><b>Release Date: </b>
+								<div id="selectedmoviedate"></div>
+							</div><br>
+							<div id="synopsis"><b>Synopsis: </b>
+								<div id="selectedmoviesynopsis"></div>
+							</div><br>
+							<div id="cast"><b>Cast: </b>
+								<div id="selectedmoviecast"></div>
+							</div>
+						</div>
+						<br>
+						<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -99,7 +100,7 @@
 	<div id="issue-embed"></div>
 </body>
 
-<br><br>
+<br>
 
 <footer>
 	<div id="testing">
