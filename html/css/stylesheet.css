@@ -191,8 +191,16 @@ footer:before {
 }
 
 #selectedmoviesynopsis {
-	height: 85px;
+	height: 95px;
 	overflow: auto;
+}
+
+#movienameandreleasedate {
+	height: 50px;
+}
+
+#cast {
+	height: 112px;
 }
 
 legend {
