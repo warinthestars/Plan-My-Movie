@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
 body {
 	margin: 55px 0 0 0;
 	padding: 0;
-	font-family: Helvetica, arial, sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 15px;
 	color: #000000;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.02);
 	-webkit-font-smoothing: antialiased;
-	background: url(../assets/images/hometheatrebg.jpg) no-repeat center center;
+	background: url(../assets/images/hometheatrebg.jpg) no-repeat center;
 	background-size: cover;
 	background-attachment: fixed;
 	display: grid;
@@ -63,10 +65,10 @@ p, .control-group {
 }
 .demo .value {
 	margin: 0 0 10px 0;
-	font-size: 12px;
+	font-size: 14px;
 }
 .demo .value span {
-	font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 .theme-selector {
 	margin-top: 10px;
@@ -95,7 +97,7 @@ pre {
 	border: 1px solid #f2f2f2;
 	padding: 10px;
 	font-size: 12px;
-	font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+	font-family: 'Source Sans Pro', sans-serif;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -127,7 +129,7 @@ input[type=button]:hover {
 	margin: auto;
 	position: relative;
 	overflow: hidden;
-	background-color: rgba(255, 255, 255, 0.774);  
+	background-color: rgba(255, 255, 255, 0.6);  
 	backdrop-filter: blur(20px);
 	color: rgb(0, 0, 0);
 	height: 75vh;
@@ -193,8 +195,9 @@ footer:before {
 	overflow: auto;
 }
 
-#bold {
+legend {
 	font-weight: bold;
+	font-size: large;
 }
 
 @media only screen and (max-width : 320px) {

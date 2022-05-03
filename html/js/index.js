@@ -102,8 +102,7 @@ $(function () {
 						backdroppath = "assets/images/hometheatrebg.jpg";
 					} else {
 						backdroppath = "https://image.tmdb.org/t/p/original" + detailsResponse.backdrop_path;
-						document.body.style.background = "url('" + backdroppath + "') no-repeat center fixed";
-						document.body.style.backgroundSize = "contain";
+						document.body.style.background = "url('" + backdroppath + "') no-repeat center";
 					}
 					console.log("backdrop path is" + backdroppath);
 					releasedate = detailsResponse.release_date;
