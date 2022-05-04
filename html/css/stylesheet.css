@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
+
 body {
-	margin: 70px 0;
+	margin: 55px 0 0 0;
 	padding: 0;
-	font-family: Helvetica, arial, sans-serif;
+	font-family: 'Source Sans Pro', monospace;
 	font-size: 15px;
-	color: #454545;
+	color: #000000;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.02);
 	-webkit-font-smoothing: antialiased;
-	background: url(../assets/images/hometheatrebg.jpg) no-repeat center center;
+	background: url(../assets/images/hometheatrebg.jpg) no-repeat center;
 	background-size: cover;
 	background-attachment: fixed;
 	display: grid;
@@ -24,7 +26,7 @@ h1 {
 	margin: auto;
 	font-weight: 300;
 	font-size: 35px;
-	letter-spacing: 5px;
+	letter-spacing: 12px;
 	text-align: center;
 	background-color: white;
 	border-radius: 15px;
@@ -43,8 +45,8 @@ p, .control-group {
 }
 .demo {
 	border-bottom: 1px solid #e8e8e8;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 30px;
+	padding-bottom: 40px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -63,10 +65,10 @@ p, .control-group {
 }
 .demo .value {
 	margin: 0 0 10px 0;
-	font-size: 12px;
+	font-size: 14px;
 }
 .demo .value span {
-	font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+	font-family: 'Source Sans Pro', monospace;
 }
 .theme-selector {
 	margin-top: 10px;
@@ -87,15 +89,15 @@ p, .control-group {
 	margin: auto;
 }
 #wrapper > * {
-	padding-left: 100px;
-	padding-right: 100px;
+	padding-left: 75px;
+	padding-right: 75px;
 }
 pre {
 	background: #f8f8f8;
 	border: 1px solid #f2f2f2;
 	padding: 10px;
 	font-size: 12px;
-	font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+	font-family: 'Source Sans Pro', monospace;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -123,19 +125,19 @@ input[type=button]:hover {
 .comeonjeffgetem {
 	border: 1px solid #fff;
 	border-radius: 15px;
-	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 1rem 0 rgba(73, 73, 73, 0.2);
 	margin: auto;
 	position: relative;
 	overflow: hidden;
-	background-color: rgba(255, 255, 255, .55);  
-	backdrop-filter: blur(5px);
-	color: black;
-	height: 600px;
+	background-color: rgba(255, 255, 255, 0.6);  
+	backdrop-filter: blur(20px);
+	color: rgb(0, 0, 0);
+	height: 75vh;
 }
 
 .comeonjeffgetem:before {
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
-	filter: blur(10px);
+	filter: blur(20px);
 	content: '';
 	height: 100%;
 	width: 100%;
@@ -186,6 +188,24 @@ footer:before {
 #sectionidk {
 	border-radius: 10px;
 	border: 1px solid #000;
+}
+
+#selectedmoviesynopsis {
+	height: 95px;
+	overflow: auto;
+}
+
+#movienameandreleasedate {
+	height: 50px;
+}
+
+#cast {
+	height: 112px;
+}
+
+legend {
+	font-weight: bold;
+	font-size: large;
 }
 
 @media only screen and (max-width : 320px) {
