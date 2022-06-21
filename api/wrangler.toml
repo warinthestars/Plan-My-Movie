@@ -1,0 +1,4 @@
+name = "api"
+main = "src/worker.js"
+compatibility_date = "2022-06-21"
+route = "api.planmymovie.com/*"
