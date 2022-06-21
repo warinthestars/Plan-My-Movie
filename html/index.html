@@ -1,10 +1,6 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
-<!--[if IE 7	]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
-<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
-<!--[if gt IE 8]><!-->
+
 <html class="no-js">
-<!--<![endif]-->
 
 <head>
 	<title>Plan My Movie</title>
@@ -73,28 +69,32 @@
 							value="Calculate Movie End Time" />
 					</fieldset>
 					<br>
-					<div id="display-results">
-						<div id="display-poster"><img id="selectedmovieposterimg" width="225"
-								src="assets/images/noselection250w.png"></div>
-						<div id="textselection">
-							<div id="movienameandreleasedate">
-								<div id="moviename"><b>Name: </b>
-									<div id="selectedmoviename"></div>
+					<fieldset id="sectionidk">
+						<legend>Selected Movie Details</legend>
+						<div id="display-results">
+							<div id="display-poster"><img id="selectedmovieposterimg" width="225"
+									src="assets/images/noselection250w.png"></div>
+							<div id="textselection">
+								<div id="movienameandreleasedate">
+									<div id="moviename"><b>Movie Title: </b>
+										<div id="selectedmoviename"></div>
+									</div>
+									<div id="release"><b>Release Date: </b>
+										<div id="selectedmoviedate"></div>
+									</div>
 								</div>
-								<div id="release"><b>Release Date: </b>
-									<div id="selectedmoviedate"></div>
+								<div id="synopsis"><b>Synopsis: </b>
+									<div id="selectedmoviesynopsis"></div>
+								</div><br>
+								<div id="cast"><b>Cast: </b>
+									<div id="selectedmoviecast"></div>
 								</div>
 							</div>
-							<div id="synopsis"><b>Synopsis: </b>
-								<div id="selectedmoviesynopsis"></div>
-							</div><br>
-							<div id="cast"><b>Cast: </b>
-								<div id="selectedmoviecast"></div>
-							</div>
+
+							<br>
+							<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
 						</div>
-						<br>
-						<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
-					</div>
+					</fieldset>
 				</div>
 			</div>
 		</div>

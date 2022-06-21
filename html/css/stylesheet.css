@@ -1,7 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
 
+html {
+	display: grid;
+	grid-template-areas: 
+	"body body body"
+	"footer footer footer";
+	justify-content: center;
+	transform: translate(-50%, -50%);
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
 body {
-	margin: 55px 0 0 0;
 	padding: 0;
 	font-family: 'Source Sans Pro', monospace;
 	font-size: 15px;
@@ -13,6 +25,7 @@ body {
 	background-attachment: fixed;
 	display: grid;
 	justify-content: center;
+	height: auto;
 }
 a, a:visited {
 	color: #3fabff;
@@ -132,7 +145,7 @@ input[type=button]:hover {
 	background-color: rgba(255, 255, 255, 0.6);  
 	backdrop-filter: blur(20px);
 	color: rgb(0, 0, 0);
-	height: 75vh;
+	height: 80vh;
 }
 
 .comeonjeffgetem:before {
@@ -174,6 +187,7 @@ footer:before {
 #display-poster{
 	float: left;
 	padding-right: 15px;
+
 }
 
 #moviename{
