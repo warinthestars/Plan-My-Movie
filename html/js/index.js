@@ -10,6 +10,7 @@ class MovieDetails {
 		this.movieCast = h;
 	}
 }
+var currentMovieID;
 var movieRunTime;
 var	currentTime;
 var movieEndTime;
@@ -77,6 +78,7 @@ $(function () {
 		var update = function () { 
 			$value.text(JSON.stringify($input.val())); 
 			blah($input.val());
+			currentMovieID = $input.val();
 		}
 		$(this).on('change', update);
 		update();
@@ -139,7 +141,6 @@ function setSystemtime() {
 }
 
 function copyToclip() {
-	let currentMovieID = new URLSearchParams(window.location.search).get('id');
 	navigator.clipboard.writeText(window.location.pathname + "?id=" + currentMovieID);
 }
 
