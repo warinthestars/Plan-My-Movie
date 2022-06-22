@@ -99,23 +99,22 @@ $(function () {
 					url: 'https://api.planmymovie.com/3/movie/credits/?id=' + $input.val(),
 					type: 'GET',
 					dataType: 'json',
-					success: function (castresponse) {
+					success: function (castResponse) {
 
-						var castInfo;
+						let castOutput;
 
 						try {
-							castInfo = castresponse.cast[0].name + " as " + castresponse.cast[0].character + "<br>";
+							castOutput = castResponse.cast[0].name + (castResponse.cast[0].character != "" ? " as " + castResponse.cast[0].character:"") + "<br>";
 
-							for (var i = 1; i < 5 && i < castresponse.cast.length; i++) {
-								castInfo = castInfo + castresponse.cast[i].name + " as " + castresponse.cast[i].character + "<br>";
-
+							for (var i = 1; i < 5 && i < castResponse.cast.length; i++) {
+								castOutput = castOutput + castResponse.cast[i].name + (castResponse.cast[i].character != "" ? " as " + castResponse.cast[i].character:"") + "<br>";
 							}
 
 						} catch (e) {
-							var castInfo = "No Cast Information Available.";
+							castOutput = "No Cast Information Available.";
 						}
 
-						document.getElementById("selectedmoviecast").innerHTML = castInfo;
+						document.getElementById("selectedmoviecast").innerHTML = castOutput;
 
 					}
 				});
@@ -142,7 +141,7 @@ function getLocalTime() {
 
 function calcTime() {
 
-	var timeValue = $('#timepickergo').datetimepicker('getDate');
+	let timeValue = $('#timepickergo').datetimepicker('getDate');
 
 	if (movieRunTime === void 0 && timeValue !== null) {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and try again!' + '<br><br>';
@@ -219,23 +218,22 @@ function getMovieDetailsOnLoad(id) {
 			url: 'https://api.planmymovie.com/3/movie/credits/?id=' + id,
 			type: 'GET',
 			dataType: 'json',
-			success: function (castresponse) {
+			success: function (castResponse) {
 
-				var uhidk;
+				var castOutput;
 
 				try {
-					uhidk = castresponse.cast[0].name + " as " + castresponse.cast[0].character + "<br>";
+					castOutput = castResponse.cast[0].name + " as " + castResponse.cast[0].character + "<br>";
 
-					for (var i = 1; i < 5 && i < castresponse.cast.length; i++) {
-						uhidk = uhidk + castresponse.cast[i].name + " as " + castresponse.cast[i].character + "<br>";
-
+					for (var i = 1; i < 5 && i < castResponse.cast.length; i++) {
+						castOutput = castOutput + castResponse.cast[i].name + (castResponse.cast[i].character != "" && castResponse.cast[i].character != null ? (" as " + castResponse.cast[i].character):"") + "<br>";
 					}
 
 				} catch (e) {
-					var uhidk = "No Cast Information Available.";
+					var castOutput = "No Cast Information Available.";
 				}
 
-				document.getElementById("selectedmoviecast").innerHTML = uhidk;
+				document.getElementById("selectedmoviecast").innerHTML = castOutput;
 			}
 		})
 	}
