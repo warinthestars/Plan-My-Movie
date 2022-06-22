@@ -21,7 +21,7 @@ body {
 	text-shadow: 0 1px 0 rgba(0,0,0,0.02);
 	-webkit-font-smoothing: antialiased;
 	background: url(../assets/images/hometheatrebg.jpg) no-repeat center;
-	background-size: cover;
+	background-size: auto !important; 
 	background-attachment: fixed;
 	display: grid;
 	justify-content: center;
