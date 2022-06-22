@@ -1,17 +1,24 @@
-var currentTime;
-var movieEndTime;
+class MovieDetails {
+	constructor(a, b, c, d, e, f, g, h) {
+		this.currentMovieID = a;
+		this.movieTitle = b;
+		this.movieRunTime = c;
+		this.posterPath = d;
+		this.backDropPath = e;
+		this.releaseDate = f;
+		this.synoposis = g;
+		this.movieCast = h;
+	}
+}
 var movieRunTime;
-var currentMovieID = 683970; // hehe
+var	currentTime;
+var movieEndTime;
 
-$(function () {
-	checkForURLParams();
-})
-
-$(function () {
+$(() => {
 	document.getElementById("timepickergo").value = getLocalTime();
 })
 
-$(function () {
+$(() => {
 	$('#select-movie').selectize({
 		valueField: 'id',
 		labelField: 'title',
@@ -21,21 +28,25 @@ $(function () {
 		render: {
 			option: function (item) {
 
-				var movieArt;
-
-				!item.poster_path ? movieArt = "assets/images/noart.png":movieArt = "https://image.tmdb.org/t/p/w92" + item.poster_path;
+				const selectionObject = {
+					movieArt: !item.poster_path ? "assets/images/noart.png" : "https://image.tmdb.org/t/p/w92" + item.poster_path,
+					movieTitle: item.title,
+					movieReleaseDate: item.release_date,
+					movieSynopsis: !item.overview ? 'No synopsis available at this time.' : item.overview
+				};
 
 				return '<div>' +
-					'<img src="' + movieArt + '" alt="">' +
+					'<img src="' + selectionObject.movieArt + '" alt="">' +
 					'<span class="title">' +
-					'<span class="name">' + item.title + " " + "(" + item.release_date + ")" + '</span>' +
+					'<span class="name">' + selectionObject.movieTitle + " " + "(" + selectionObject.movieReleaseDate + ")" + '</span>' +
 					'</span>' +
-					'<span class="description">' + (!item.overview ? 'No synopsis available at this time.':item.overview) + '</span>' +
-				'</div>';
+					'<span class="description">' + selectionObject.movieSynopsis + '</span>' +
+					'</div>';
 			}
 		},
 		load: function (query, callback) {
-			if (!query.length) return callback();
+			if (!query.length)
+				return callback();
 			$.ajax({
 				url: 'https://api.planmymovie.com/3/search/movie/',
 				type: 'GET',
@@ -51,7 +62,7 @@ $(function () {
 				}
 			});
 		}
-	})
+	});
 })
 
 $(function () {
@@ -59,66 +70,20 @@ $(function () {
 	var $wrapper = document.getElementById('#wrapper');
 	// show current input values
 	$('select.selectized,input.selectized', $wrapper).each(function () {
+		console.log("Selectize Initialized")
 		var $idcontainer = $('<div style="display:none">').addClass('value').html('Current Value: '); // TO-DO: Remove this line without breaking everything
 		var $value = $('<span>').appendTo($idcontainer);
 		var $input = $(this);
-		var update = function (e) { $value.text(JSON.stringify($input.val())); }
+		var update = function () { 
+			$value.text(JSON.stringify($input.val())); 
+			blah($input.val());
+		}
 		$(this).on('change', update);
 		update();
-		$(this).on('change', getMovieDetails);
 
 		$idcontainer.insertAfter($input);
 
 		$value.text(JSON.stringify($input.val()));
-
-		// TO-DO: Merge internal "getMovieDetails" and global "getMovieDetails" into one function
- 		function getMovieDetails() {
-				$.ajax({
-					url: 'https://api.planmymovie.com/3/movie/?id=' + $input.val(),
-					type: 'GET',
-					dataType: 'json',
-					success: function (detailsResponse) {
-							const movieDetails = {
-								currentMovieID: detailsResponse.id,
-								movieTitle: detailsResponse.title,
-								movieRunTime: detailsResponse.runtime,
-								posterPath: !detailsResponse.poster_path ? "./assets/images/noart250w.png":"https://image.tmdb.org/t/p/w500" + detailsResponse.poster_path,
-								backDropPath: !detailsResponse.backdrop_path ? "assets/images/hometheatrebg.jpg":"https://image.tmdb.org/t/p/original" + detailsResponse.backdrop_path,
-								releaseDate: detailsResponse.release_date,
-								synoposis: detailsResponse.overview
-							};
-							document.getElementById("selectedmoviename").innerHTML = movieDetails.movieTitle;
-							document.getElementById("selectedmovieposterimg").src = movieDetails.posterPath;
-							document.getElementById("selectedmoviedate").innerHTML = movieDetails.releaseDate;
-							document.getElementById("selectedmoviesynopsis").innerHTML = movieDetails.synoposis;
-							document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movieDetails.movieRunTime) + '<br><br>';
-							document.body.style.background = "url(" + movieDetails.backDropPath + ") no-repeat center fixed";
-						}
-				});
-				$.ajax({
-					url: 'https://api.planmymovie.com/3/movie/credits/?id=' + $input.val(),
-					type: 'GET',
-					dataType: 'json',
-					success: function (castResponse) {
-
-						let castOutput;
-
-						try {
-							castOutput = castResponse.cast[0].name + (castResponse.cast[0].character != "" ? " as " + castResponse.cast[0].character:"") + "<br>";
-
-							for (var i = 1; i < 5 && i < castResponse.cast.length; i++) {
-								castOutput = castOutput + castResponse.cast[i].name + (castResponse.cast[i].character != "" ? " as " + castResponse.cast[i].character:"") + "<br>";
-							}
-
-						} catch (e) {
-							castOutput = "No Cast Information Available.";
-						}
-
-						document.getElementById("selectedmoviecast").innerHTML = castOutput;
-
-					}
-				});
-		} 
 	});
 });
 
@@ -129,7 +94,6 @@ $(function () {
 		timeInput: true,
 		parse: "loose",
 		alwaysSetTime: true
-
 	})
 })
 
@@ -141,7 +105,7 @@ function getLocalTime() {
 
 function calcTime() {
 
-	let timeValue = $('#timepickergo').datetimepicker('getDate');
+	var timeValue = $('#timepickergo').datetimepicker('getDate');
 
 	if (movieRunTime === void 0 && timeValue !== null) {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and try again!' + '<br><br>';
@@ -167,8 +131,7 @@ var timeConvert = function (n) {
 }
 
 function addMinutes(date, minutes) {
-	movieEndTime = new Date(+date + minutes * 60000);
-	return movieEndTime;
+	return movieEndTime = new Date(+date + minutes * 60000);
 }
 
 function setSystemtime() {
@@ -176,65 +139,68 @@ function setSystemtime() {
 }
 
 function copyToclip() {
-	navigator.clipboard.writeText("https://dev.planmymovie.com/?id=" + currentMovieID);
+	let currentMovieID = new URLSearchParams(window.location.search).get('id');
+	navigator.clipboard.writeText(window.location.pathname + "?id=" + currentMovieID);
 }
 
-function checkForURLParams() {
-	var urlForIdParam = window.location.search;
-	var urlParams = new URLSearchParams(urlForIdParam);
-	var idParam = urlParams.get('id');
-	if (idParam && !idParam === null) { 
-		getMovieDetailsOnLoad(idParam) 
+async function blah (id) {
+	const idParam = id ? id:new URLSearchParams(window.location.search).get('id');
+	if (idParam) {
+		let detailsResponse = await getMovieDetails(idParam);
+		let castResponse = await getMovieCast(idParam);
+		const movie = new MovieDetails(
+			detailsResponse.id,
+			detailsResponse.title,
+			detailsResponse.runtime,
+			detailsResponse.poster_path,
+			detailsResponse.backdrop_path,
+			detailsResponse.release_date,
+			detailsResponse.overview,
+			castResponse
+		);
+
+		movieRunTime = detailsResponse.runtime;
+		updatePage(movie);
 	};
+};
+
+async function getMovieDetails(movieID) {
+
+	const xhttpgetmovieurl = "https://api.planmymovie.com/3/movie/?id=" + movieID;
+	let fetchmovieresponse = await fetch(xhttpgetmovieurl);
+	let detailsResponse = await fetchmovieresponse.json();
+	return detailsResponse;
+
 }
 
-function getMovieDetailsOnLoad(id) {
-	if (id && !id === null) {
-		$.ajax({
-			url: 'https://api.planmymovie.com/3/movie/?id=' + id,
-			type: 'GET',
-			dataType: 'json',
-			success: function (detailsResponse) {
-				const movieDetails = {
-					currentMovieID: detailsResponse.id,
-					movieTitle: detailsResponse.title,
-					movieRunTime: detailsResponse.runtime,
-					posterPath: !detailsResponse.poster_path ? "assets/images/noart250w.png":"https://image.tmdb.org/t/p/w500" + detailsResponse.poster_path,
-					backDropPath: !detailsResponseResponse.backdrop_path ? "assets/images/hometheatrebg.jpg":"https://image.tmdb.org/t/p/original" + detailsResponse.backdrop_path,
-					releaseDate: detailsResponse.release_date,
-					synoposis: detailsResponse.overview
-				};
-				document.getElementById("selectedmoviename").innerHTML = movieDetails.movieTitle;
-				document.getElementById("selectedmovieposterimg").src = movieDetails.posterPath;
-				document.getElementById("selectedmoviedate").innerHTML = movieDetails.releaseDate;
-				document.getElementById("selectedmoviesynopsis").innerHTML = movieDetails.synoposis;
-				document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movieDetails.movieRunTime) + '<br><br>';
+async function getMovieCast(movieID) {
+	
+	const xhttpgetcreditsurl = "https://api.planmymovie.com/3/movie/credits/?id=" + movieID;
+	let fetchmoviecast = await fetch(xhttpgetcreditsurl);
+	let castResponse = await fetchmoviecast.json();
 
-				document.body.style.background = "url('" + movieDetails.backDropPath + "') no-repeat center fixed";
-				document.body.style.backgroundSize = "contain";
+		try {
+			castOutput = castResponse.cast[0].name + " as " + castResponse.cast[0].character + "<br>";
+
+			for (var i = 1; i < 5 && i < castResponse.cast.length; i++) {
+				castOutput = castOutput + castResponse.cast[i].name + (castResponse.cast[i].character != "" && castResponse.cast[i].character != null ? (" as " + castResponse.cast[i].character):"") + "<br>";
 			}
-		});
-		$.ajax({
-			url: 'https://api.planmymovie.com/3/movie/credits/?id=' + id,
-			type: 'GET',
-			dataType: 'json',
-			success: function (castResponse) {
 
-				var castOutput;
+		} catch (e) {
+			castOutput = "No Cast Information Available.";
+		}
 
-				try {
-					castOutput = castResponse.cast[0].name + " as " + castResponse.cast[0].character + "<br>";
+	return castOutput;
 
-					for (var i = 1; i < 5 && i < castResponse.cast.length; i++) {
-						castOutput = castOutput + castResponse.cast[i].name + (castResponse.cast[i].character != "" && castResponse.cast[i].character != null ? (" as " + castResponse.cast[i].character):"") + "<br>";
-					}
+}
 
-				} catch (e) {
-					var castOutput = "No Cast Information Available.";
-				}
-
-				document.getElementById("selectedmoviecast").innerHTML = castOutput;
-			}
-		})
-	}
-};
+function updatePage(movie) {
+	document.getElementById("selectedmoviename").innerHTML = movie.movieTitle;
+	document.getElementById("selectedmovieposterimg").src = movie.posterPath ? "https://image.tmdb.org/t/p/original" + movie.posterPath:"./assets/images/noart250w.png";
+	document.getElementById("selectedmoviedate").innerHTML = movie.releaseDate;
+	document.getElementById("selectedmoviesynopsis").innerHTML = movie.synoposis ? movie.synoposis:"No synopsis available at this time.";
+	document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movie.movieRunTime) + '<br><br>';
+	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
+	document.body.style.background = movie.backDropPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.backDropPath + "') no-repeat center center fixed":"url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
+	document.body.style.backgroundSize = "cover";
+}
