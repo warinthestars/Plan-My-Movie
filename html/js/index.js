@@ -43,11 +43,10 @@ $(function () {
 				data: {
 					query: query,
 				},
-				error: function () {
-					callback();
+				error: function (e) {
+					callback(e);
 				},
 				success: function (res) {
-					console.log(res.results);
 					callback(res.results);
 				}
 			});
@@ -60,21 +59,21 @@ $(function () {
 	var $wrapper = document.getElementById('#wrapper');
 	// show current input values
 	$('select.selectized,input.selectized', $wrapper).each(function () {
-		console.log("Selectize Initialized")
+		let currentMovieID;
 		var $idcontainer = $('<div style="display:none">').addClass('value').html('Current Value: '); // TO-DO: Remove this line without breaking everything
 		var $value = $('<span>').appendTo($idcontainer);
 		var $input = $(this);
 		var update = function (e) { $value.text(JSON.stringify($input.val())); }
 		$(this).on('change', update);
 		update();
-		$(this).on('change', getMovieDetails);
+		$(this).on('change', getMovieDetails($input.val));
 
 		$idcontainer.insertAfter($input);
 
 		$value.text(JSON.stringify($input.val()));
 
 		// TO-DO: Merge internal "getMovieDetails" and global "getMovieDetails" into one function
-		function getMovieDetails() {
+ 		function getMovieDetails() {
 				$.ajax({
 					url: 'https://api.planmymovie.com/3/movie/?id=' + $input.val(),
 					type: 'GET',
@@ -97,16 +96,12 @@ $(function () {
 							backdroppath = "https://image.tmdb.org/t/p/original" + detailsResponse.backdrop_path;
 							document.body.style.background = "url('" + backdroppath + "') no-repeat center";
 						}
-						console.log("backdrop path is" + backdroppath);
 						releasedate = detailsResponse.release_date;
 						document.getElementById("selectedmoviedate").innerHTML = releasedate;
 						synoposis = detailsResponse.overview;
-						console.log(synoposis);
 						document.getElementById("selectedmoviesynopsis").innerHTML = synoposis;
 
-						console.log(detailsResponse);
 						document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movieRunTime) + '<br><br>';
-						console.log("movie run time: " + movieRunTime);
 					}
 				});
 				$.ajax({
@@ -117,8 +112,6 @@ $(function () {
 						console.log(e);
 					},
 					success: function (castresponse) {
-
-						console.log(castresponse);
 
 						var castInfo;
 
@@ -138,7 +131,7 @@ $(function () {
 
 					}
 				});
-		}
+		} 
 	});
 });
 
@@ -165,13 +158,10 @@ function calcTime() {
 
 	if (movieRunTime === void 0 && timeValue !== null) {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and try again!' + '<br><br>';
-		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else if (timeValue === null && movieRunTime !== void 0) {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a time and try again!' + '<br><br>';
-		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else if (movieRunTime === void 0 && timeValue === null) {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and time and try again!' + '<br><br>';
-		console.log("movie runtime was " + movieRunTime + " and entered custom time was " + timeValue);
 	} else {
 		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + addMinutes(timeValue, movieRunTime).toLocaleString() + '<br><br>';
 	}
@@ -191,7 +181,6 @@ var timeConvert = function (n) {
 
 function addMinutes(date, minutes) {
 	movieEndTime = new Date(+date + minutes * 60000);
-	console.log("movie end time: " + movieEndTime.toLocaleString());
 	return movieEndTime;
 }
 
@@ -201,15 +190,13 @@ function setSystemtime() {
 
 function copyToclip() {
 	navigator.clipboard.writeText("https://dev.planmymovie.com/?id=" + currentMovieID);
-	console.log(currentMovieID);
 }
 
 function checkForURLParams() {
 	var urlForIdParam = window.location.search;
 	var urlParams = new URLSearchParams(urlForIdParam);
 	var idParam = urlParams.get('id');
-	console.log(idParam);
-	getMovieDetails(idParam);
+	idParam ? getMovieDetails(idParam):console.log("page loaded with no paramid");
 }
 
 function getMovieDetails(id) {
@@ -224,11 +211,7 @@ function getMovieDetails(id) {
 				movietitle = detailsResponse.title;
 				document.getElementById("selectedmoviename").innerHTML = movietitle;
 				movieRunTime = detailsResponse.runtime;
-				if (detailsResponse.poster_path === null) {
-					posterpath = "assets/images/noart250w.png";
-				} else {
-					posterpath = "https://image.tmdb.org/t/p/w500" + detailsResponse.poster_path;
-				}
+				!detailsResponse ? posterpath = "assets/images/noart250w.png":posterpath = "https://image.tmdb.org/t/p/w500" + detailsResponse.poster_path;
 				document.getElementById("selectedmovieposterimg").src = posterpath;
 				if (detailsResponse.backdrop_path === null) {
 					backdroppath = "assets/images/hometheatrebg.jpg";
@@ -237,15 +220,11 @@ function getMovieDetails(id) {
 					document.body.style.background = "url('" + backdroppath + "') no-repeat center fixed";
 					document.body.style.backgroundSize = "contain";
 				}
-				console.log("backdrop path is" + backdroppath);
 				releasedate = detailsResponse.release_date;
 				document.getElementById("selectedmoviedate").innerHTML = releasedate;
 				synoposis = detailsResponse.overview;
 				document.getElementById("selectedmoviesynopsis").innerHTML = synoposis;
-
-				console.log(detailsResponse);
 				document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movieRunTime) + '<br><br>';
-				console.log("movie run time: " + movieRunTime);
 			}
 		});
 		$.ajax({
@@ -253,8 +232,6 @@ function getMovieDetails(id) {
 			type: 'GET',
 			dataType: 'json',
 			success: function (castresponse) {
-
-				console.log(castresponse);
 
 				var uhidk;
 
@@ -271,7 +248,6 @@ function getMovieDetails(id) {
 				}
 
 				document.getElementById("selectedmoviecast").innerHTML = uhidk;
-
 			}
 		})
 	}
