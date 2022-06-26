@@ -216,6 +216,10 @@ footer:before {
 	height: 75px;
 }
 
+#select-movie-test-ts-dropdown {
+	max-height: 400px;
+}
+
 .icon{
 	width: 3rem;
 }
