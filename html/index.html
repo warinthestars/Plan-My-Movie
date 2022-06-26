@@ -1,114 +1,112 @@
 <!DOCTYPE html>
 
 <html>
+	<head>
+		<title>Plan My Movie</title>
+		<html lang="en-US">
 
-<head>
-	<title>Plan My Movie</title>
-	<html lang="en-US">
+		<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 
-	<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+		<meta name="Description" content="Plan Your Movie">
 
-	<meta name="Description" content="Plan Your Movie">
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta charset="utf-8">
 
-	<meta charset="utf-8">
+		<link rel="stylesheet" href="css/normalize.css">
+		<link rel="stylesheet" href="css/stylesheet.css">
+		<link rel="stylesheet" href="css/selectize.css">
+		<link rel="stylesheet" href="css/overrideselectizestyling.css">
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
 
-	<link rel="stylesheet" href="css/normalize.css">
-	<link rel="stylesheet" href="css/stylesheet.css">
-	<link rel="stylesheet" href="css/selectize.css">
-	<link rel="stylesheet" href="css/overrideselectizestyling.css">
-	<link rel="stylesheet" href="css/jquery-ui.css">
-	<link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/standalone/selectize.js"></script>
+		<script src="js/jquery-ui.js"></script>
+		<script src="js/jquery-ui-timepicker-addon.js"></script>
+		<script src="js/index.js"></script>
+		<script src="js/issue-embed.min.js"></script>
+		<script src="js/issueembed.js"></script>
+	</head>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/standalone/selectize.js"></script>
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/jquery-ui-timepicker-addon.js"></script>
-	<script src="js/index.js"></script>
-	<script src="js/issue-embed.min.js"></script>
-	<script src="js/issueembed.js"></script>
-</head>
-
-<body>
-	<h1>PLAN MY MOVIE</h1>
-	<div>
-		<div id="wrapper">
-			<br>
-			<div class="comeonjeffgetem">
-				<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
-				<div class="demo">
-					<div class="control-group">
+	<body>
+		<h1>PLAN MY MOVIE</h1>
+		<div>
+			<div id="wrapper">
+				<br>
+				<div class="comeonjeffgetem">
+					<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
+					<div class="demo">
+						<div class="control-group">
+							<fieldset id="sectionidk">
+								<legend id="bold">Select a Movie</legend>
+								<select id="select-movie" class="movies" placeholder="Find a movie..."></select>
+							</fieldset>
+						</div>
 						<fieldset id="sectionidk">
-							<legend id="bold">Select a Movie</legend>
-							<select id="select-movie" class="movies" placeholder="Find a movie..."></select>
+							<legend id="bold">Pick a Time</legend>
+							<div id="selectcustomtime">
+								Select a Time:
+								<input id="timepickergo"></input> <button id="resettime" onclick="setSystemtime()">Use
+									current time</button>
+								<br><br>
+							</div>
+							<div id="displayrt">
+								Movie Run-Time:
+								<br><br>
+							</div>
+							<div id="custcalctime">
+								Calculated Movie End Time:
+								<br><br>
+							</div>
+							<button type="button" id="buttoncustcalc" onclick="calcTime()">Calculate Movie End Time</button>
+						</fieldset>
+						<br>
+						<fieldset id="sectionidk">
+							<legend>Selected Movie Details</legend>
+							<div id="display-results">
+								<div id="display-poster"><img id="selectedmovieposterimg" width="225"
+										src="assets/images/noselection250w.png"></div>
+								<div id="textselection">
+									<div id="movienameandreleasedate">
+										<div id="moviename"><b>Movie Title: </b>
+											<div id="selectedmoviename"></div>
+										</div>
+										<div id="release"><b>Release Date: </b>
+											<div id="selectedmoviedate"></div>
+										</div>
+									</div>
+									<div id="synopsis"><b>Synopsis: </b>
+										<div id="selectedmoviesynopsis"></div>
+									</div><br>
+									<div id="cast"><b>Cast: </b>
+										<div id="selectedmoviecast"></div>
+									</div>
+								</div>
+
+								<br>
+								<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
+							</div>
 						</fieldset>
 					</div>
-					<fieldset id="sectionidk">
-						<legend id="bold">Pick a Time</legend>
-						<div id="selectcustomtime">
-							Select a Time:
-							<input id="timepickergo"></input> <button id="resettime" onclick="setSystemtime()">Use
-								current time</button>
-							<br><br>
-						</div>
-						<div id="displayrt">
-							Movie Run-Time:
-							<br><br>
-						</div>
-						<div id="custcalctime">
-							Calculated Movie End Time:
-							<br><br>
-						</div>
-						<button type="button" id="buttoncustcalc" onclick="calcTime()">Calculate Movie End Time</button>
-					</fieldset>
-					<br>
-					<fieldset id="sectionidk">
-						<legend>Selected Movie Details</legend>
-						<div id="display-results">
-							<div id="display-poster"><img id="selectedmovieposterimg" width="225"
-									src="assets/images/noselection250w.png"></div>
-							<div id="textselection">
-								<div id="movienameandreleasedate">
-									<div id="moviename"><b>Movie Title: </b>
-										<div id="selectedmoviename"></div>
-									</div>
-									<div id="release"><b>Release Date: </b>
-										<div id="selectedmoviedate"></div>
-									</div>
-								</div>
-								<div id="synopsis"><b>Synopsis: </b>
-									<div id="selectedmoviesynopsis"></div>
-								</div><br>
-								<div id="cast"><b>Cast: </b>
-									<div id="selectedmoviecast"></div>
-								</div>
-							</div>
-
-							<br>
-							<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
-						</div>
-					</fieldset>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="issue-embed"></div>
-</body>
+		<div id="issue-embed"></div>
+	</body>
 
-<br>
+	<br>
 
-<footer>
-	<div id="testing">
-		Movie posters, information, and API provided by <a href="https://www.themoviedb.org" target="_blank"
-			rel="noreferrer">
-			<image src="assets/images/tmdblogo.svg" id="tmdb-logo" alt="The Movie DB" />
-		</a>
-	</div>
-</footer>
-
+	<footer>
+		<div id="testing">
+			Movie posters, information, and API provided by <a href="https://www.themoviedb.org" target="_blank"
+				rel="noreferrer">
+				<image src="assets/images/tmdblogo.svg" id="tmdb-logo" alt="The Movie DB" />
+			</a>
+		</div>
+	</footer>
 </html>

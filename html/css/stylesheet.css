@@ -20,12 +20,11 @@ body {
 	color: #000000;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.02);
 	-webkit-font-smoothing: antialiased;
-	background: url(../assets/images/hometheatrebg.jpg) no-repeat center;
-	background-size: cover;
+	background: url('../assets/images/hometheatrebg.jpg') no-repeat center center fixed;
+	background-size: cover !important; 
 	background-attachment: fixed;
 	display: grid;
 	justify-content: center;
-	height: auto;
 }
 a, a:visited {
 	color: #3fabff;
