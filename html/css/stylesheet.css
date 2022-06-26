@@ -185,7 +185,7 @@ footer:before {
 #display-poster{
 	float: left;
 	padding-right: 15px;
-
+	
 }
 
 #moviename{
@@ -200,6 +200,7 @@ footer:before {
 #sectionidk {
 	border-radius: 10px;
 	border: 1px solid #000;
+	padding: 15px;
 }
 
 #selectedmoviesynopsis {
@@ -211,13 +212,15 @@ footer:before {
 	height: 50px;
 }
 
-#cast {
-	height: 112px;
+#cast, #synopsis {
+	height: 75px;
 }
 
-legend {
-	font-weight: bold;
-	font-size: large;
+.icon{
+	width: 3rem;
+}
+.item{
+	width: 100%;
 }
 
 @media only screen and (max-width : 320px) {

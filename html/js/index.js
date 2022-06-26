@@ -14,11 +14,73 @@ var currentMovieID;
 var movieRunTime;
 var	currentTime;
 var movieEndTime;
+var settings = {};
+let select = document.getElementById('#select-movie-test');
+
+$(() => new TomSelect('#select-movie-test',{
+	onChange: eventHandler('onChange'),
+	valueField: 'id',
+	labelField: 'title',
+	searchField: 'title',
+	options: [],
+	create: false,
+	persist: false,
+	maxItems: 1,
+	load: function (query, callback) {
+		if (!query.length)
+			return callback();
+		$.ajax({
+			url: 'https://api.planmymovie.com/3/search/movie/',
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				query: query,
+			},
+			error: function (e) {
+				callback(e);
+			},
+			success: function (res) {
+				callback(res.results);
+			}
+		});
+	},
+	// custom rendering functions for options and items
+	render: {
+		option: 
+			function(item) {
+				return '<div class="row border-bottom py-2">' +
+				'<div class="col-md-1">' +
+					'<img class="img-fluid" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
+				'</div>' + 
+				'<div class="col-md-11">' +
+					'<div class="mt-0"><b>' + item.title + '</b>' +
+						'<span class="small text-muted"> (' + item.release_date + ')</span>' +
+					'</div>' +
+					'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
+				'</div>' +
+			'</div>';
+		},
+		item: 
+		function(item) {
+			return '<div class="row border-bottom py-2">' +
+			'<div class="col-md-1">' +
+				'<img class="img-fluid" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
+			'</div>' + 
+			'<div class="col-md-11">' +
+				'<div class="mt-0"><b>' + item.title + '</b>' +
+					'<span class="small text-muted"> (' + item.release_date + ')</span>' +
+				'</div>' +
+				'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
+			'</div>' +
+		'</div>';
+		}
+	}
+}))
 
 $(() => {
 	document.getElementById("timepickergo").value = getLocalTime();
 })
-
+/*
 $(() => {
 	$('#select-movie').selectize({
 		valueField: 'id',
@@ -66,20 +128,20 @@ $(() => {
 	});
 })
 
-$(function () {
+$(() => {
 
 	var $wrapper = document.getElementById('#wrapper');
 	// show current input values
 	$('select.selectized,input.selectized', $wrapper).each(function () {
-		console.log("Selectize Initialized")
+		console.log("Selectize Initialized");
 		var $idcontainer = $('<div style="display:none">').addClass('value').html('Current Value: '); // TO-DO: Remove this line without breaking everything
 		var $value = $('<span>').appendTo($idcontainer);
 		var $input = $(this);
-		var update = function () { 
-			$value.text(JSON.stringify($input.val())); 
+		var update = function () {
+			$value.text(JSON.stringify($input.val()));
 			blah($input.val());
 			currentMovieID = $input.val();
-		}
+		};
 		$(this).on('change', update);
 		update();
 
@@ -87,16 +149,25 @@ $(function () {
 
 		$value.text(JSON.stringify($input.val()));
 	});
-});
+});*/
 
-$(function () {
+var eventHandler = function(name) {
+	return function() {
+		console.log(name, arguments[0]);
+		(JSON.stringify(arguments[0]));
+		blah(arguments[0]);
+		currentMovieID = arguments[0];
+	};
+}
+
+$(() => {
 	$('#timepickergo').datetimepicker({
 		controlType: 'select',
 		timeFormat: "h:mm TT",
 		timeInput: true,
 		parse: "loose",
 		alwaysSetTime: true
-	})
+	});
 })
 
 function getLocalTime() {
@@ -120,14 +191,14 @@ function calcTime() {
 	}
 }
 
-var timeConvert = function (n) {
+var timeConvert = (n) => {
 	var minutes = n % 60;
 	var hours = (n - minutes) / 60;
 	var minutesPlurality;
 	var hoursPlurality;
 
-	minutes == 1 ? minutesPlurality = "minute":minutesPlurality = "minutes";
-	hours == 1 ? hoursPlurality = "hour":hoursPlurality = "hours";
+	minutes == 1 ? minutesPlurality = "minute" : minutesPlurality = "minutes";
+	hours == 1 ? hoursPlurality = "hour" : hoursPlurality = "hours";
 
 	return hours + " " + hoursPlurality + " and " + minutes + " " + minutesPlurality;
 }
