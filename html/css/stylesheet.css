@@ -1,20 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap');
 
-html {
-	display: grid;
-	grid-template-areas: 
-	"body body body"
-	"footer footer footer";
-	justify-content: center;
-	transform: translate(-50%, -50%);
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-}
-
 body {
-	padding: 0;
+	display: block;
+	margin: auto !important;
+	position: relative;
 	font-family: 'Source Sans Pro', monospace;
 	font-size: 15px;
 	color: #000000;
@@ -26,14 +15,29 @@ body {
 	display: grid;
 	justify-content: center;
 }
-a, a:visited {
-	color: #3fabff;
-	text-decoration: none;
+
+footer{
+	border: 1px solid #fff;
+	border-radius: 15px;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	background-color: rgba(255, 255, 255, .75);  
+	backdrop-filter: blur(5px);
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin: auto;
+	color: black;
+	margin-bottom: 2% !important;
 }
-a:hover {
-	color: #008af5;
+
+footer:before {
+	box-shadow: inset 0 0 2000px rgba(255, 255, 255, .25);
+	filter: blur(10px);
 }
+
 h1 {
+	margin-top: 2% !important;
 	width: 70%;
 	margin: auto;
 	font-weight: 300;
@@ -43,59 +47,7 @@ h1 {
 	background-color: white;
 	border-radius: 15px;
 }
-h2 {
-	font-size: 15px;
-	color: #a0a0a0;
-	margin: 30px 0;
-}
-label {
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-p, .control-group {
-	margin: 0 0 20px 0;
-}
-.demo {
-	border-bottom: 1px solid #e8e8e8;
-	padding-top: 30px;
-	padding-bottom: 40px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
-.demo:last-child {
-	border-bottom: 0 none;
-}
-.demo select, .demo .selectize-control {
-	width: 100%;
-}
-.demo > *:first-child {
-	margin-top: 0;
-}
-.demo > *:last-child {
-	margin-bottom: 0;
-}
-.demo .value {
-	margin: 0 0 10px 0;
-	font-size: 14px;
-}
-.demo .value span {
-	font-family: 'Source Sans Pro', monospace;
-}
-.theme-selector {
-	margin-top: 10px;
-	font-size: 13px;
-}
-.theme-selector:before {
-	content: 'Themes: ';
-}
-.theme-selector a {
-	margin: 0 5px;
-}
-.theme-selector a.active {
-	color: #202020;
-	font-weight: bold;
-}
+
 #wrapper {
 	width: 70em;
 	margin: auto;
@@ -104,16 +56,7 @@ p, .control-group {
 	padding-left: 75px;
 	padding-right: 75px;
 }
-pre {
-	background: #f8f8f8;
-	border: 1px solid #f2f2f2;
-	padding: 10px;
-	font-size: 12px;
-	font-family: 'Source Sans Pro', monospace;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-}
+
 input[type=button] {
 	margin: 0 10px 0 0;
 	padding: 6px 10px;
@@ -137,13 +80,15 @@ input[type=button]:hover {
 	border: 1px solid #fff;
 	border-radius: 15px;
 	box-shadow: 0 0 1rem 0 rgba(73, 73, 73, 0.2);
-	margin: auto;
 	position: relative;
-	overflow: hidden;
 	background-color: rgba(255, 255, 255, 0.6);  
 	backdrop-filter: blur(20px);
 	color: rgb(0, 0, 0);
-	height: 80vh;
+	border-bottom: 1px solid #e8e8e8;
+	padding: 30px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .comeonjeffgetem:before {
@@ -154,32 +99,9 @@ input[type=button]:hover {
 	width: 100%;
 }
 
-footer{
-	border: 1px solid #fff;
-	border-radius: 15px;
-	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-	background-color: rgba(255, 255, 255, .75);  
-	backdrop-filter: blur(5px);
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 5px;
-	padding-bottom: 5px;
-	margin: auto;
-	color: black;
-}
-
-footer:before {
-	box-shadow: inset 0 0 2000px rgba(255, 255, 255, .25);
-	filter: blur(10px);
-}
-
 #tmdb-logo {
 	height: 13px;
 	display: inline-block;
-}
-
-#calctime, #localtime, #buttonregcalc {
-	display: none;
 }
 
 #display-poster{
@@ -220,11 +142,16 @@ footer:before {
 	max-height: 400px;
 }
 
-.icon{
-	width: 3rem;
-}
 .item{
 	width: 100%;
+}
+
+.col-lg-4 {
+	width: 75% !important;
+}
+
+.img-fluid {
+	width: 100% !important;
 }
 
 @media only screen and (max-width : 320px) {
@@ -242,6 +169,49 @@ footer:before {
 		margin-top: 10px;
 		margin-bottom: 10px;
 		min-height: 90vh;
+	}
+	#wrapper {
+		width: 95%;
+		margin: auto;
+		min-height: 90vh;
+		max-width: 90vw;
+	}
+	
+	#wrapper > * {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	
+	.comeonjeffgetem {
+		background-color: rgba(255, 255, 255, .55);  
+		min-height: 90vh;
+		height: 100%;
+	}
+	
+	.demo {
+		padding: 20px;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+	}
+}
+
+@media only screen and (min-width: 321px) and (max-width : 767px) {
+	h1{
+	margin: auto;
+	width: 90%;
+	display: block;
+	font-size: 25px;
+	text-align: center;
+	}
+	
+	body {
+		width: 100%;
+		display: block;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		min-height: 90vh;
+		
 	}
 	#wrapper {
 		width: 95%;
@@ -268,7 +238,7 @@ footer:before {
 	}
 }
 
-@media only screen and (min-width: 321px) and (max-width : 767px) {
+@media only screen and (min-width: 767px) and (max-width : 1079px) {
 	h1{
 	margin: auto;
 	width: 90%;

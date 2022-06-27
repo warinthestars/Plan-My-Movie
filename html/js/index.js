@@ -14,11 +14,9 @@ var currentMovieID;
 var movieRunTime;
 var	currentTime;
 var movieEndTime;
-var settings = {};
-let select = document.getElementById('#select-movie-test');
 
 $(() => new TomSelect('#select-movie-test',{
-	onChange: eventHandler('onChange'),
+	onChange: eventHandleChange('onChange'),
 	valueField: 'id',
 	labelField: 'title',
 	searchField: 'title',
@@ -48,110 +46,40 @@ $(() => new TomSelect('#select-movie-test',{
 	render: {
 		option: 
 			function(item) {
-				return '<div class="row border-bottom py-2">' +
-				'<div class="col-md-1">' +
-					'<img class="img-fluid" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
-				'</div>' + 
-				'<div class="col-md-11">' +
-					'<div class="mt-0"><b>' + item.title + '</b>' +
-						'<span class="small text-muted"> (' + item.release_date + ')</span>' +
-					'</div>' +
-					'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
-				'</div>' +
-			'</div>';
+				return '' +
+					'<div class="row border-bottom py-4 clearfix">' +
+						'<div class="col-md-1">' +
+							'<img class="img-fluid" id="selectedart" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
+						'</div>' + 
+						'<div class="col-md-11">' +
+							'<div class="mt-0 d-inline"><b>' + item.title + '</b>' +
+								'<span class="small text-muted"> (' + item.release_date + ')</span>' +
+							'</div>' +
+							'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
+						'</div>' +
+					'</div>';
 		},
 		item: 
-		function(item) {
-			return '<div class="row border-bottom py-2">' +
-			'<div class="col-md-1">' +
-				'<img class="img-fluid" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
-			'</div>' + 
-			'<div class="col-md-11">' +
-				'<div class="mt-0"><b>' + item.title + '</b>' +
-					'<span class="small text-muted"> (' + item.release_date + ')</span>' +
-				'</div>' +
-				'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
-			'</div>' +
-		'</div>';
+			function(item) {
+				movieRunTime = item.runtime;
+				currentMovieID = item.id;
+					return '' +
+					'<div class="row border-bottom py-2">' +
+						'<div class="col-xl-2">' +
+							'<img class="img-fluid" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/original' + item.poster_path) + '"/>' + 
+						'</div>' + 
+						'<div class="col-lg-4">' +
+							'<div class="mt-0"><b>' + item.title + '</b>' +
+								'<span class="small text-muted"> (' + item.release_date + ')</span>' +
+							'</div>' +
+							'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
+						'</div>' +
+					'</div>';
 		}
 	}
 }))
 
-$(() => {
-	document.getElementById("timepickergo").value = getLocalTime();
-})
-/*
-$(() => {
-	$('#select-movie').selectize({
-		valueField: 'id',
-		labelField: 'title',
-		searchField: 'title',
-		options: [],
-		create: false,
-		render: {
-			option: function (item) {
-
-				const selectionObject = {
-					movieArt: !item.poster_path ? "assets/images/noart.png" : "https://image.tmdb.org/t/p/w92" + item.poster_path,
-					movieTitle: item.title,
-					movieReleaseDate: item.release_date,
-					movieSynopsis: !item.overview ? 'No synopsis available at this time.' : item.overview
-				};
-
-				return '<div>' +
-					'<img src="' + selectionObject.movieArt + '" alt="">' +
-					'<span class="title">' +
-					'<span class="name">' + selectionObject.movieTitle + " " + "(" + selectionObject.movieReleaseDate + ")" + '</span>' +
-					'</span>' +
-					'<span class="description">' + selectionObject.movieSynopsis + '</span>' +
-					'</div>';
-			}
-		},
-		load: function (query, callback) {
-			if (!query.length)
-				return callback();
-			$.ajax({
-				url: 'https://api.planmymovie.com/3/search/movie/',
-				type: 'GET',
-				dataType: 'json',
-				data: {
-					query: query,
-				},
-				error: function (e) {
-					callback(e);
-				},
-				success: function (res) {
-					callback(res.results);
-				}
-			});
-		}
-	});
-})
-
-$(() => {
-
-	var $wrapper = document.getElementById('#wrapper');
-	// show current input values
-	$('select.selectized,input.selectized', $wrapper).each(function () {
-		console.log("Selectize Initialized");
-		var $idcontainer = $('<div style="display:none">').addClass('value').html('Current Value: '); // TO-DO: Remove this line without breaking everything
-		var $value = $('<span>').appendTo($idcontainer);
-		var $input = $(this);
-		var update = function () {
-			$value.text(JSON.stringify($input.val()));
-			blah($input.val());
-			currentMovieID = $input.val();
-		};
-		$(this).on('change', update);
-		update();
-
-		$idcontainer.insertAfter($input);
-
-		$value.text(JSON.stringify($input.val()));
-	});
-});*/
-
-var eventHandler = function(name) {
+var eventHandleChange = function(name) {
 	return function() {
 		console.log(name, arguments[0]);
 		(JSON.stringify(arguments[0]));
@@ -161,7 +89,12 @@ var eventHandler = function(name) {
 }
 
 $(() => {
+	document.getElementById("timepickergo").value = getLocalTime();
+})
+
+$(() => {
 	$('#timepickergo').datetimepicker({
+		onSelect: eventTimeChange('onSelect'),
 		controlType: 'select',
 		timeFormat: "h:mm TT",
 		timeInput: true,
@@ -170,25 +103,38 @@ $(() => {
 	});
 })
 
+var eventTimeChange = function(name) {
+	console.log("blah");
+	return function() {
+		calcTime(movieRunTime);
+	}
+}
+
 function getLocalTime() {
 	currentTime = new Date().toLocaleString();
 	result = currentTime.replace(',', '');
+	calcTime(movieRunTime);
 	return result;
 }
 
-function calcTime() {
-
+function calcTime(rt) {
+	console.log("calc time ran");
 	var timeValue = $('#timepickergo').datetimepicker('getDate');
+	var calctimeselector = document.getElementById("custcalctime");
+	calctimeselector.innerHTML = '<b>Calculated Movie End Time:</b> ';
 
-	if (movieRunTime === void 0 && timeValue !== null) {
-		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and try again!' + '<br><br>';
-	} else if (timeValue === null && movieRunTime !== void 0) {
-		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a time and try again!' + '<br><br>';
-	} else if (movieRunTime === void 0 && timeValue === null) {
-		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + 'Select a movie and time and try again!' + '<br><br>';
+	if (rt === void 0 && timeValue !== null) {
+		null;
+	} else if (rt !== void 0 && timeValue === null) {
+		calctimeselector.innerHTML += 'Select a time and try again!';
+	} else if (rt === void 0 && timeValue === null) {
+		calctimeselector.innerHTML += 'Select a movie and time and try again!';
+	} else if (rt == 0) {
+		calctimeselector.innerHTML += 'Run-time information missing from database.'
 	} else {
-		document.getElementById("custcalctime").innerHTML = 'Calculated Movie End Time: ' + addMinutes(timeValue, movieRunTime).toLocaleString() + '<br><br>';
+		calctimeselector.innerHTML += addMinutes(timeValue, rt).toLocaleString();
 	}
+	calctimeselector.innerHTML += '<br><br>';
 }
 
 var timeConvert = (n) => {
@@ -215,6 +161,10 @@ function copyToclip() {
 	navigator.clipboard.writeText(window.location.hostname + "?id=" + currentMovieID);
 }
 
+$(function checkforURLParams () {
+	blah();
+})
+
 async function blah (id) {
 	const idParam = id ? id:new URLSearchParams(window.location.search).get('id');
 	if (idParam) {
@@ -230,9 +180,10 @@ async function blah (id) {
 			detailsResponse.overview,
 			castResponse
 		);
-
+		currentMovieID = idParam;
 		movieRunTime = detailsResponse.runtime;
 		updatePage(movie);
+		calcTime(movieRunTime);
 	};
 };
 
@@ -267,11 +218,12 @@ async function getMovieCast(movieID) {
 }
 
 function updatePage(movie) {
+	/*
 	document.getElementById("selectedmoviename").innerHTML = movie.movieTitle;
 	document.getElementById("selectedmovieposterimg").src = movie.posterPath ? "https://image.tmdb.org/t/p/original" + movie.posterPath:"./assets/images/noart250w.png";
 	document.getElementById("selectedmoviedate").innerHTML = movie.releaseDate;
-	document.getElementById("selectedmoviesynopsis").innerHTML = movie.synoposis ? movie.synoposis:"No synopsis available at this time.";
-	document.getElementById("displayrt").innerHTML = 'Movie Run-Time: ' + timeConvert(movie.movieRunTime) + '<br><br>';
+	document.getElementById("selectedmoviesynopsis").innerHTML = movie.synoposis ? movie.synoposis:"No synopsis available at this time."; */
+	document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b> ' + timeConvert(movie.movieRunTime) + '<br><br>';
 	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
 	document.body.style.background = movie.backDropPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.backDropPath + "') no-repeat center center fixed":"url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
 	document.body.style.backgroundSize = "cover";
