@@ -145,11 +145,35 @@ input[type=button]:hover {
 }
 
 .col-lg-4 {
-	width: 75% !important;
+	width: 90% !important;
 }
 
 .img-fluid {
 	width: 100% !important;
+}
+
+#mobilebreak {
+	display: none;
+}
+
+@media screen and (max-width: 767px) {
+	#displaypostercontainer {
+		display: flex;
+		flex: auto;
+		margin: auto !important;
+	}
+	#selectandcast {
+		flex: auto;
+	}
+
+	#mobilebreak {
+		display: unset;
+	}
+
+	#display-poster {
+		margin:auto;
+		max-width: 100%;
+	}
 }
 
 @media only screen and (max-width : 320px) {
@@ -185,7 +209,12 @@ input[type=button]:hover {
 		min-height: 90vh;
 		height: 100%;
 	}
+
+	.img-fluid {
+		max-width: 25% !important;
+	}
 }
+
 
 @media only screen and (min-width: 321px) and (max-width : 767px) {
 	h1{
@@ -219,6 +248,10 @@ input[type=button]:hover {
 		background-color: rgba(255, 255, 255, .55);  
 		min-height: 90vh;
 		height: 100%;
+	}
+
+	.img-fluid {
+		max-width: 25% !important;
 	}
 }
 
