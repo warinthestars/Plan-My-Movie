@@ -36,14 +36,7 @@ var settings = {
 			return callback();
 		} else {
 			var url = 'https://api.planmymovie.com/3/search/movie/' + encodeURIComponent(query);
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", url);
-            xhttp.setRequestHeader({
-                
-            });
-            xhttp.send();
-/*			fetch(url, {
-                mode: 'no-cors',
+			fetch(url, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
@@ -55,8 +48,6 @@ var settings = {
 					callback();
 				});
 		}
-        */
-        }
 	},
 	// custom rendering functions for options and items
 	render: {
