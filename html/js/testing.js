@@ -39,7 +39,8 @@ var settings = {
 			fetch(url, {
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                mode: 'no-cors'
             })
 				.then(response => response.json())
 				.then(json => {
