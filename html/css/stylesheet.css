@@ -185,13 +185,6 @@ input[type=button]:hover {
 		min-height: 90vh;
 		height: 100%;
 	}
-	
-	.demo {
-		padding: 20px;
-		-webkit-border-radius: 0;
-		-moz-border-radius: 0;
-		border-radius: 0;
-	}
 }
 
 @media only screen and (min-width: 321px) and (max-width : 767px) {
@@ -227,13 +220,6 @@ input[type=button]:hover {
 		min-height: 90vh;
 		height: 100%;
 	}
-	
-	.demo {
-		padding: 20px;
-		-webkit-border-radius: 0;
-		-moz-border-radius: 0;
-		border-radius: 0;
-	}
 }
 
 @media only screen and (min-width: 767px) and (max-width : 1079px) {
@@ -268,12 +254,5 @@ input[type=button]:hover {
 		background-color: rgba(255, 255, 255, .55);  
 		min-height: 90vh;
 		height: 100%;
-	}
-	
-	.demo {
-		padding: 20px;
-		-webkit-border-radius: 0;
-		-moz-border-radius: 0;
-		border-radius: 0;
 	}
 }
