@@ -27,6 +27,7 @@ $(() => new TomSelect('#select-movie-test',{
 		document.getElementById("selectedmoviecast").innerHTML = "";
 		document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b><br><br> ';
 		movieRunTime = null;
+		document.title = "Plan My Movie";
 	},
 	valueField: 'id',
 	labelField: 'title',
@@ -249,4 +250,5 @@ function updatePage(movie) {
 	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
 	document.body.style.background = movie.backDropPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.backDropPath + "') no-repeat center center fixed":"url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
 	document.body.style.backgroundSize = "cover";
+	document.title = "Plan My Movie - " + movie.movieTitle;
 }
