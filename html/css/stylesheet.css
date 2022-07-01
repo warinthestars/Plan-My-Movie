@@ -107,10 +107,7 @@ input[type=button]:hover {
 #display-poster{
 	float: left;
 	padding-right: 15px;
-	border-radius: 10px;
-	border: 1px solid rgb(163, 163, 163);
-	padding: 4px;
-	margin-right: 10px;
+	
 }
 
 #moviename{
@@ -128,11 +125,16 @@ input[type=button]:hover {
 	padding: 15px;
 }
 
+#selectedmoviesynopsis {
+	height: 95px;
+	overflow: auto;
+}
+
 #movienameandreleasedate {
 	height: 50px;
 }
 
-#cast {
+#cast, #synopsis {
 	height: 75px;
 }
 
