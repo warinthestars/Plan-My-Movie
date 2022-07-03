@@ -62,11 +62,13 @@ $(() => new TomSelect('#select-movie-test',{
 				return	'' +
 				'<div class="row border-bottom py-2">' +
 					'<div class="col-lg-4" id="col-lg-4-selected">' +
-					'<img class="img-fluid" id="selectorart" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
-						'<div class="mt-0"><b>' + item.title + '</b>' +
-							'<span class="small text-muted"> (' + item.release_date + ')</span>' +
+					'<img class="img-fluid" id="selectorart" src="' + (!item.poster_path ? './assets/images/noartsmol.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
+						'<div id="selecteddetails">'+
+							'<div class="mt-0"><b>' + item.title + '</b>' +
+								'<span class="small text-muted"> (' + item.release_date + ')</span>' +
+							'</div>' +
+							'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
 						'</div>' +
-						'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
 					'</div>' +
 				'</div>';
 		},
