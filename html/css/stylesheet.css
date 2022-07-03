@@ -46,6 +46,9 @@ h1 {
 	text-align: center;
 	background-color: white;
 	border-radius: 15px;
+	direction:rtl;
+	display:inline-block;
+	text-indent:-12px;
 }
 
 #wrapper {
