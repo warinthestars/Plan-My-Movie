@@ -59,18 +59,16 @@ $(() => new TomSelect('#select-movie-test',{
 			function(item) {
 				movieRunTime = item.runtime;
 				currentMovieID = item.id;
-				return '' +
-					'<div class="row border-bottom py-4 clearfix">' +
-						'<div class="col-md-1">' +
-							'<img class="img-fluid" id="selectedart" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
-						'</div>' + 
-						'<div class="col-md-11">' +
-							'<div class="mt-0 d-inline"><b>' + item.title + '</b>' +
-								'<span class="small text-muted"> (' + item.release_date + ')</span>' +
-							'</div>' +
-							'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
+				return	'' +
+				'<div class="row border-bottom py-2">' +
+					'<div class="col-lg-4" id="col-lg-4-selected">' +
+					'<img class="img-fluid" id="selectorart" src="' + (!item.poster_path ? './assets/images/noart.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' + 
+						'<div class="mt-0"><b>' + item.title + '</b>' +
+							'<span class="small text-muted"> (' + item.release_date + ')</span>' +
 						'</div>' +
-					'</div>';
+						'<div class="mb-1">' + (!item.overview ? 'No synopsis available at this time.' : item.overview) + '</div>' +
+					'</div>' +
+				'</div>';
 		},
 		item: 
 			function(item) {
@@ -78,7 +76,7 @@ $(() => new TomSelect('#select-movie-test',{
 				currentMovieID = item.id;
 				return '' +
 				'<div class="row border-bottom py-2">' +
-					'<div class="col-lg-4">' +
+					'<div class="col-lg-4" id="col-lg-4-selected">' +
 						'<div class="mt-0"><b>' + item.title + '</b>' +
 							'<span class="small text-muted"> (' + item.release_date + ')</span>' +
 						'</div>' +
