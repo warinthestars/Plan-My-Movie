@@ -163,11 +163,12 @@ input[type=button]:hover {
 	width: 225px;
 	max-height: 300px;
 	max-width: 225px;
+	margin-right: 5px;
 	background-size: contain !important;
 	background-repeat: no-repeat !important;
 	transition: background 1s;
 	float: left;
-	background-image: url('/html/assets/images/noselection250w.png');
+	background-image: url('../assets/images/noselection250w.png');
 }
 
 @media screen and (max-width: 767px) {

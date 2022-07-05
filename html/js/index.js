@@ -21,8 +21,8 @@ $(() => new TomSelect('#select-movie-test',{
 	},
 	onChange: eventHandleChange('onChange'),
 	onDelete: function() {
-		document.getElementById("display-poster").src = "./assets/images/noart250w.png";
-		document.getElementById("display-poster").title = "No Movie Selected.";
+		document.getElementById("displaypostercontainer").style.background = "url('./assets/images/noart250w.png')";
+		document.getElementById("displaypostercontainer").title = "No Movie Selected";
 		document.body.style.background = "url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
 		document.getElementById("selectedmoviecast").innerHTML = "";
 		document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b><br><br> ';
@@ -59,6 +59,8 @@ $(() => new TomSelect('#select-movie-test',{
 			function(item) {
 				movieRunTime = item.runtime;
 				currentMovieID = item.id;
+				posterPathPre = item.poster_path;
+
 				return	'' +
 				'<div class="row border-bottom py-2">' +
 					'<div class="col-lg-4" id="col-lg-4-selected">' +
@@ -209,6 +211,7 @@ async function blah (id) {
 			detailsResponse.overview,
 			castResponse
 		);
+		await preload(movie.posterPath, movie.backDropPath);
 		currentMovieID = idParam;
 		movieRunTime = detailsResponse.runtime;
 		updatePage(movie);
@@ -241,6 +244,11 @@ async function getMovieCast(movieID) {
 
 	return castOutput;
 
+}
+
+async function preload(a, b) {
+	document.getElementById("posterpathpre").style.background = a ? "url('" + "https://image.tmdb.org/t/p/original" + a + "')" :"url('./assets/images/noart250w.png')";
+	document.getElementById("bgpre").style.background = b ? "url('" + "https://image.tmdb.org/t/p/original" + b + "') no-repeat center center fixed":"url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
 }
 
 function updatePage(movie) {
