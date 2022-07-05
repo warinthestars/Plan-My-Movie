@@ -6,7 +6,7 @@ body {
 	position: relative;
 	font-family: 'Source Sans Pro', monospace;
 	font-size: 15px;
-	color: #000000;
+	background-color: #000000 !important;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.02);
 	-webkit-font-smoothing: antialiased;
 	background: url('../assets/images/hometheatrebg.jpg') no-repeat center center fixed;
