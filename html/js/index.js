@@ -244,8 +244,8 @@ async function getMovieCast(movieID) {
 }
 
 function updatePage(movie) {
-	document.getElementById("display-poster").src = movie.posterPath ? "https://image.tmdb.org/t/p/original" + movie.posterPath:"./assets/images/noart250w.png";
-	document.getElementById("display-poster").title = movie.movieTitle ? movie.movieTitle + " (" + movie.releaseDate + ")":"No Movie Selected";
+	document.getElementById("displaypostercontainer").style.background = movie.posterPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.posterPath+ "')" :"url('./assets/images/noart250w.png')";
+	document.getElementById("displaypostercontainer").title = movie.movieTitle ? movie.movieTitle + " (" + movie.releaseDate + ")":"No Movie Selected";
 	document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b> ' + timeConvert(movie.movieRunTime) + '<br><br>';
 	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
 	document.body.style.background = movie.backDropPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.backDropPath + "') no-repeat center center fixed":"url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
