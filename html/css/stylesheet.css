@@ -135,10 +135,6 @@ input[type=button]:hover {
 	height: 50px;
 }
 
-#cast {
-	height: 75px;
-}
-
 .item{
 	width: 100%;
 }
@@ -155,6 +151,10 @@ input[type=button]:hover {
 
 #selecteddetails {
 	overflow: auto;
+}
+
+.ts-dropdown-content{
+	max-height: 500px !important;
 }
 
 @media screen and (max-width: 767px) {
@@ -175,6 +175,8 @@ input[type=button]:hover {
 		margin:auto;
 		max-width: 100%;
 	}
+
+	
 }
 
 @media only screen and (max-width : 320px) {
@@ -209,6 +211,10 @@ input[type=button]:hover {
 		background-color: rgba(255, 255, 255, .55);  
 		min-height: 90vh;
 		height: 100%;
+	}
+	
+	.ts-dropdown-content{
+		max-height: 500px !important;
 	}
 }
 
@@ -245,6 +251,10 @@ input[type=button]:hover {
 		background-color: rgba(255, 255, 255, .55);  
 		min-height: 90vh;
 		height: 100%;
+	}
+		
+	.ts-dropdown-content{
+		max-height: 300px !important;
 	}
 }
 
