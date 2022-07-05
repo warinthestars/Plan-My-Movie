@@ -167,6 +167,7 @@ input[type=button]:hover {
 	background-repeat: no-repeat !important;
 	transition: background 1s;
 	float: left;
+	background-image: url('/html/assets/images/noselection250w.png');
 }
 
 @media screen and (max-width: 767px) {
