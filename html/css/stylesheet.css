@@ -135,6 +135,10 @@ input[type=button]:hover {
 	padding: 15px;
 }
 
+#selectedmoviecast {
+	float: left;
+}
+
 #movienameandreleasedate {
 	height: 50px;
 }
@@ -214,12 +218,10 @@ input[type=button]:hover {
 		display: block;
 		margin-top: 10px;
 		margin-bottom: 10px;
-		min-height: 90vh;
 	}
 	#wrapper {
 		width: 95%;
 		margin: auto;
-		min-height: 90vh;
 		max-width: 90vw;
 	}
 	
@@ -230,7 +232,6 @@ input[type=button]:hover {
 	
 	.comeonjeffgetem {
 		background-color: rgba(255, 255, 255, .55);  
-		min-height: 90vh;
 		height: 100%;
 	}
 	
@@ -254,13 +255,11 @@ input[type=button]:hover {
 		display: block;
 		margin-top: 10px;
 		margin-bottom: 10px;
-		min-height: 90vh;
 		
 	}
 	#wrapper {
 		width: 95%;
 		margin: auto;
-		min-height: 90vh;
 	}
 	
 	#wrapper > * {
@@ -270,7 +269,6 @@ input[type=button]:hover {
 	
 	.comeonjeffgetem {
 		background-color: rgba(255, 255, 255, .55);  
-		min-height: 90vh;
 		height: 100%;
 	}
 		
@@ -293,13 +291,11 @@ input[type=button]:hover {
 		display: block;
 		margin-top: 10px;
 		margin-bottom: 10px;
-		min-height: 90vh;
 		
 	}
 	#wrapper {
 		width: 95%;
 		margin: auto;
-		min-height: 90vh;
 	}
 	
 	#wrapper > * {
@@ -309,7 +305,6 @@ input[type=button]:hover {
 	
 	.comeonjeffgetem {
 		background-color: rgba(255, 255, 255, .55);  
-		min-height: 90vh;
 		height: 100%;
 	}
 }
