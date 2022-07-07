@@ -46,42 +46,40 @@
 	<body>
 		<h1 class="center">PLAN MY MOVIE</h1>
 		<br>
-		<div id="wrapper">
-			<div class="comeonjeffgetem">
-				<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
-				<fieldset id="sectionidk">
-					<div>
-						<legend>Select a Movie</legend><br>
-						<div id="selectandcast">
-							<div id="displaypostercontainer"></div>
-							<select id="select-movie-test" placeholder="Select a Movie"></select>
-							<br>
-							<div id="textselection">
-								<div id="cast"><b style="float: left; margin-right: 10px;">Cast:	</b>
-									<div id="selectedmoviecast">Select a movie!</div>
-								</div>
+		<div class="wrapper">
+			<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
+			<fieldset id="pagesection">
+				<div>
+					<legend>Select a Movie</legend><br>
+					<div id="selectandcast">
+						<div id="displaypostercontainer"></div>
+						<select id="select-movie-test" placeholder="Select a Movie"></select>
+						<br>
+						<div id="textselection">
+							<div id="cast"><b style="float: left; margin-right: 10px;">Cast:	</b>
+								<div id="selectedmoviecast">Select a movie!</div>
 							</div>
 						</div>
 					</div>
-				</fieldset>
+				</div>
+			</fieldset>
+			<br>
+			<fieldset id="pagesection">
+				<legend>Pick a Time</legend>
+				<div id="selectcustomtime">
+					<b>Select a Time: </b>
+					<input id="timepickergo" type="datetime"></input> <button onclick="setSystemtime()">Use current time</button>
+				</div>
 				<br>
-				<fieldset id="sectionidk">
-					<legend>Pick a Time</legend>
-					<div id="selectcustomtime">
-						<b>Select a Time: </b>
-						<input id="timepickergo" type="datetime"></input> <button onclick="setSystemtime()">Use current time</button>
-					</div>
-					<br>
-					<div id="displayrt">
-						<b>Movie Run-Time: </b> Select a movie!<br><br>
-					</div>
-						<div id="custcalctime"><i>
-							<span class="movieenddescriptortext"><b>Calculated Movie End Time:</b></span> <span id="movieendtimeoutput"></span>
-						</i></div>
-					<br>
-					<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
-				</fieldset>
-			</div>
+				<div id="displayrt">
+					<b>Movie Run-Time: </b> Select a movie!<br><br>
+				</div>
+					<div id="custcalctime"><i>
+						<span class="movieenddescriptortext"><b>Calculated Movie End Time:</b></span> <span id="movieendtimeoutput"></span>
+					</i></div>
+				<br>
+				<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
+			</fieldset>
 		</div>
 		<div id="posterpathpre"></div>
 		<div id="bgpre"></div>
