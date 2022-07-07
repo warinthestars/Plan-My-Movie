@@ -127,26 +127,23 @@ function getLocalTime() {
 	return result;
 }
 
-
 function calcTime(rt) {
 	var timeValue = $('#timepickergo').datetimepicker('getDate');
-	var calctimeselector = document.getElementById("custcalctime");
-	calctimeselector.innerHTML = '<b>Calculated Movie End Time:</b> ';
+	var calculatedtimeselector = document.getElementById("movieendtimeoutput");
 
 	if (rt === void 0 && timeValue !== null) {
 		null;
 	} else if (rt !== void 0 && timeValue === null) {
-		calctimeselector.innerHTML += 'Select a time and try again!';
+		calculatedtimeselector.innerHTML = '<u>Select a time and try again!</u>';
 	} else if (rt === void 0 && timeValue === null) {
-		calctimeselector.innerHTML += 'Select a movie and time and try again!';
+		calculatedtimeselector.innerHTML = '<u>Select a movie and time and try again!</u>';
 	} else if (rt === null && timeValue !== null) {
-		calctimeselector.innerHTML += 'Select a movie and try again!';
-	} else if (rt === "" && timeValue !== null) {
-		calctimeselector.innerHTML += 'Run-time information missing from database.'
+		calculatedtimeselector.innerHTML = '<u>Select a movie and try again!</u>';
+	} else if (rt == 0 && timeValue !== null) {
+		calculatedtimeselector.innerHTML = '<u>Run-time information missing from database.</u>'
 	} else {
-		calctimeselector.innerHTML += addMinutes(timeValue, rt).toLocaleString();
+		calculatedtimeselector.innerHTML = addMinutes(timeValue, rt).toLocaleString();
 	}
-	calctimeselector.innerHTML += '<br><br>';
 }
 
 var timeConvert = (n) => {
