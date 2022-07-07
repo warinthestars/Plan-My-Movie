@@ -6,7 +6,7 @@ body {
 	position: relative;
 	font-family: 'Source Sans Pro', monospace;
 	font-size: 15px;
-	color: #000000;
+	background-color: #000000 !important;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.02);
 	-webkit-font-smoothing: antialiased;
 	background: url('../assets/images/hometheatrebg.jpg') no-repeat center center fixed;
@@ -14,6 +14,7 @@ body {
 	background-attachment: fixed;
 	display: grid;
 	justify-content: center;
+	transition: background 1s;
 }
 
 footer{
@@ -157,12 +158,20 @@ input[type=button]:hover {
 	max-height: 500px !important;
 }
 
+#displaypostercontainer{
+	height: 300px;
+	width: 225px;
+	max-height: 300px;
+	max-width: 225px;
+	margin-right: 5px;
+	background-size: contain !important;
+	background-repeat: no-repeat !important;
+	transition: background 1s;
+	float: left;
+	background-image: url('../assets/images/noselection250w.png');
+}
+
 @media screen and (max-width: 767px) {
-	#displaypostercontainer {
-		display: flex;
-		flex: auto;
-		margin: auto !important;
-	}
 	#selectandcast {
 		flex: auto;
 	}
@@ -171,21 +180,22 @@ input[type=button]:hover {
 		display: unset;
 	}
 
-	#display-poster {
-		margin:auto;
+	#displaypostercontainer {
+		display: flex;
+		flex: auto;
+		margin: auto !important;
 		max-width: 100%;
+		float: unset;
 	}
-
-	
 }
 
 @media only screen and (max-width : 320px) {
 	h1{
-	margin: auto;
-	width: 90%;
-	display: block;
-	font-size: 25px;
-	text-align: center;
+		margin: auto;
+		width: 90%;
+		display: block;
+		font-size: 25px;
+		text-align: center;
 	}
 	
 	body {

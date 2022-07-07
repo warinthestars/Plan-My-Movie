@@ -44,10 +44,8 @@
 				<fieldset id="sectionidk">
 					<div>
 						<legend>Select a Movie</legend><br>
-						<div id="displaypostercontainer">
-							<img id="display-poster" width="225" src="assets/images/noselection250w.png" title="No Movie Selected">
-						</div>
 						<div id="selectandcast">
+							<div id="displaypostercontainer"></div>
 							<select id="select-movie-test" placeholder="Select a Movie"></select>
 							<br>
 							<div id="textselection">
@@ -77,6 +75,8 @@
 				<br>
 			</div>
 		</div>
+		<div id="posterpathpre"></div>
+		<div id="bgpre"></div>
 		<br>
 		<div id="issue-embed"></div>
 		<script src="js/issue-embed.min.js"></script>
@@ -84,9 +84,8 @@
 	</body>
 
 	<footer>
-			Movie posters, information, and API provided by 
-			<a href="https://www.themoviedb.org" target="_blank" rel="noreferrer">
-				<image src="assets/images/tmdblogo.svg" id="tmdb-logo" alt="The Movie DB" />
-			</a>
+			This product uses the TMDB API but is not endorsed or certified by TMDB. <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
+				<image src="assets/images/tmdblogo.svg" id="tmdb-logo" alt="TMDb" />
+			</a> 
 	</footer>
 </html>
