@@ -1,2 +1,8 @@
-User-agent: *
+User-Agent: *
 Disallow: /
+Disallow: /assets/
+Disallow: /css/
+Disallow: /js/
+
+
+Sitemap: sitemap.xml
