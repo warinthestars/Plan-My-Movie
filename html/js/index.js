@@ -258,13 +258,13 @@ async function updatePage(movie) {
 }
 
 $(window).load(function () {
-    $(".trigger_popup_fricc").click(function(){
-       $('.hover_bkgr_fricc').show();
+    $(".trigger_popup").click(function(){
+       $('.hover_bkgr').show();
     });
-    $('.hover_bkgr_fricc').click(function(){
-        $('.hover_bkgr_fricc').hide();
+    $('.hover_bkgr').click(function(){
+        $('.hover_bkgr').hide();
     });
     $('.popupCloseButton').click(function(){
-        $('.hover_bkgr_fricc').hide();
+        $('.hover_bkgr').hide();
     });
 });

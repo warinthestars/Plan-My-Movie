@@ -165,7 +165,7 @@ input[type=button]:hover {
 	max-height: 500px !important;
 }
 
-.hover_bkgr_fricc{
+.hover_bkgr{
     background:rgba(0,0,0,.4);
     cursor:pointer;
     display:none;
@@ -176,12 +176,12 @@ input[type=button]:hover {
     width:100%;
     z-index:10000;
 }
-.hover_bkgr_fricc .helper{
+.hover_bkgr .helper{
     display:inline-block;
     height:100%;
     vertical-align:middle;
 }
-.hover_bkgr_fricc > div {
+.hover_bkgr > div {
     background-color: #fff;
     box-shadow: 10px 10px 60px #555;
     display: inline-block;
@@ -216,7 +216,7 @@ input[type=button]:hover {
     background-color: #ccc;
 }
 
-.trigger_popup_fricc {
+.trigger_popup {
 	padding: 12px;
 	border: #000 !important;
 	border-radius: 2px;
@@ -233,7 +233,7 @@ input[type=button]:hover {
 	z-index: 100;
 }
 
-.trigger_popup_fricc:hover {
+.trigger_popup:hover {
 	opacity: 1;
 }
 
