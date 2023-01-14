@@ -49,7 +49,7 @@ $(() => new TomSelect('#select-movie-test', {
 			"Accept": "testHeader", 
 			"Accept": "Access-Control-Allow-Origin", 
 			"Accept": "Vary"
-			}
+			},
 			error: function (e) {
 				callback(e);
 			},
