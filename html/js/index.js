@@ -46,9 +46,7 @@ $(() => new TomSelect('#select-movie-test', {
 				query: query,
 			},
 			headers: {
-			"Accept": "testHeader", 
-			"Accept": "Access-Control-Allow-Origin", 
-			"Accept": "Vary"
+			"Accept": "testHeader, Vary, Access-Control-Allow-Origin"
 			},
 			error: function (e) {
 				callback(e);
