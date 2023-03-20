@@ -5,4 +5,4 @@ Disallow: /css/
 Disallow: /js/
 
 
-Sitemap: sitemap.xml
+Sitemap: https://planmymovie.com/sitemap.xml

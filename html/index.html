@@ -2,7 +2,6 @@
 
 <html>
 	<head>
-
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 			<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQLWMTJFW4"></script>
 				<script>
@@ -19,7 +18,7 @@
 		<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 		<link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 
-		<meta name="Description" content="Plan Your Movie">
+		<meta name="Description" content="Use Plan My Movie to plan when to start your movie and know when it will end.">
 
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -42,64 +41,83 @@
 		<script src="js/issue-embed.min.js"></script>
 		<script src="js/issueembed.js"></script>
 		<script src="js/index.js"></script>
-		
-
 	</head>
 
 	<body>
 		<h1 class="center">PLAN MY MOVIE</h1>
 		<br>
-		<div id="wrapper">
-			<div class="comeonjeffgetem">
-				<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
-				<fieldset id="sectionidk">
-					<div>
-						<legend>Select a Movie</legend><br>
-						<div id="selectandcast">
-							<div id="displaypostercontainer"></div>
-							<select id="select-movie-test" placeholder="Select a Movie"></select>
-							<br>
-							<div id="textselection">
-								<div id="cast"><b>Cast: </b>
-									<div id="selectedmoviecast"></div>
-								</div>
+		<div class="wrapper">
+			<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
+			<select id="select-movie-test" placeholder="Select a Movie"></select><br>
+			<script src="js/tomselectinit.js" ></script>
+			<fieldset id="pagesection">
+				<div>
+					<div id="moviedetails">
+						<div id="displaypostercontainer"></div>
+						<div id="textselection">
+							<span id="titleanddate">
+								<b id="title"></b> <span id="releasedate"></span>
+							</span>
+							<div id="synopsis"></div>
+							<div id="cast"><b style="float: left; margin-right: 10px;">Cast:	</b>
+								<div id="selectedmoviecast">Select a movie!</div>
 							</div>
 						</div>
 					</div>
-				</fieldset>
+				</div>
+			</fieldset>
+			<br>
+			<fieldset id="pagesection">
+				<legend>Pick a Time</legend>
+				<div id="selectcustomtime">
+					<b>Select a Time: </b>
+					<input id="timepickergo" type="datetime"></input> <button onclick="setSystemtime()">Use current time</button>
+				</div>
 				<br>
-				<fieldset id="sectionidk">
-					<legend>Pick a Time</legend>
-					<div id="selectcustomtime">
-						<b>Select a Time: </b>
-						<input id="timepickergo" type="datetime"></input> <button onclick="setSystemtime()">Use current time</button>
-					</div>
-					<br>
-					<div id="displayrt">
-						<b>Movie Run-Time: </b> Select a movie!<br><br>
-					</div>
-					<div id="custcalctime">
-						Calculated Movie End Time:
-					</div>
-					<button id="copytoclippy" onclick="copyToclip()">Copy movie to clipboard</button>
-				</fieldset>
+				<div id="displayrt">
+					<b>Movie Run-Time: </b> Select a movie!<br><br>
+				</div>
+					<div id="custcalctime"><i>
+						<span class="movieenddescriptortext"><b>Calculated Movie End Time:</b></span> <span id="movieendtimeoutput"></span>
+					</i></div>
 				<br>
-			</div>
+				<button onclick="copyToclip()">Copy movie to clipboard</button>
+			</fieldset>
 		</div>
 		<div id="posterpathpre"></div>
 		<div id="bgpre"></div>
-		<br>
 		<div id="issue-embed"></div>
 		<script src="js/issue-embed.min.js"></script>
 		<script src="js/issueembed.js"></script>
 		<!-- Cloudflare Web Analytics -->
 		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f1c6f93d2c614f52aaae648334173232"}'></script>
 		<!-- End Cloudflare Web Analytics -->
+
+		<div class="trigger_popup">
+			<img class="" src="assets/icons/info.png" width="50px" />
+		</div>
+
+		<div class="hover_bkgr">
+			<span class="helper"></span>
+			<div>
+				<div class="popupCloseButton">&times;</div>
+				<h3 id="comicsans">Use Plan My Movie to plan when to start your movie and know when it will end.</h3>
+				<br>
+				Created by <a href="https://github.com/stonefrango" target="_blank">stonefrango</a> and <a href="https://github.com/warinthestars" target="_blank">warinthestars</a>.
+				<br>
+				View this project on GitHub: <a href="https://github.com/warinthestars/Plan-My-Movie" target="_blank">Plan My Movie</a>
+			</div>
+		</div>
 	</body>
 
 	<footer>
-			This product uses the TMDB API but is not endorsed or certified by TMDB. <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
-				<image src="assets/images/tmdblogo.svg" id="tmdb-logo" alt="TMDb" />
-			</a> 
+		<div id="footwrapper">
+			<span>
+				This product uses the TMDB API but is not endorsed or certified by
+				<a href="https://www.themoviedb.org/" target="_blank" id="tmdb-logo" rel="noreferrer">
+					<image src="assets/images/tmdblogo.svg"  alt="TMDb" />
+				</a>.
+			</span>
+		</div>
 	</footer>
 </html>
