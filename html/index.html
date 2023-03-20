@@ -48,14 +48,17 @@
 		<br>
 		<div class="wrapper">
 			<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
+			<select id="select-movie-test" placeholder="Select a Movie"></select><br>
+			<script src="js/tomselectinit.js" ></script>
 			<fieldset id="pagesection">
 				<div>
-					<legend>Select a Movie</legend><br>
-					<div id="selectandcast">
+					<div id="moviedetails">
 						<div id="displaypostercontainer"></div>
-						<select id="select-movie-test" placeholder="Select a Movie"></select>
-						<br>
 						<div id="textselection">
+							<span id="titleanddate">
+								<b id="title"></b> <span id="releasedate"></span>
+							</span>
+							<div id="synopsis"></div>
 							<div id="cast"><b style="float: left; margin-right: 10px;">Cast:	</b>
 								<div id="selectedmoviecast">Select a movie!</div>
 							</div>
@@ -83,7 +86,6 @@
 		</div>
 		<div id="posterpathpre"></div>
 		<div id="bgpre"></div>
-		<br>
 		<div id="issue-embed"></div>
 		<script src="js/issue-embed.min.js"></script>
 		<script src="js/issueembed.js"></script>
@@ -99,7 +101,7 @@
 			<span class="helper"></span>
 			<div>
 				<div class="popupCloseButton">&times;</div>
-				<h3>Use Plan My Movie to plan when to start your movie and know when it will end.</h3>
+				<h3 id="comicsans">Use Plan My Movie to plan when to start your movie and know when it will end.</h3>
 				<br>
 				Created by <a href="https://github.com/stonefrango" target="_blank">stonefrango</a> and <a href="https://github.com/warinthestars" target="_blank">warinthestars</a>.
 				<br>
@@ -109,8 +111,13 @@
 	</body>
 
 	<footer>
-			This product uses the TMDB API but is not endorsed or certified by TMDB. <a href="https://www.themoviedb.org/" target="_blank" rel="noreferrer">
-				<image src="assets/images/tmdblogo.svg" id="tmdb-logo" alt="TMDb" />
-			</a> 
+		<div id="footwrapper">
+			<span>
+				This product uses the TMDB API but is not endorsed or certified by
+				<a href="https://www.themoviedb.org/" target="_blank" id="tmdb-logo" rel="noreferrer">
+					<image src="assets/images/tmdblogo.svg"  alt="TMDb" />
+				</a>.
+			</span>
+		</div>
 	</footer>
 </html>

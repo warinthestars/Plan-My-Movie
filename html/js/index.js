@@ -15,100 +15,8 @@ var movieRunTime;
 var currentTime;
 var movieEndTime;
 
-$(() => new TomSelect('#select-movie-test', {
-	onInitialize: function () {
-		initialLoadDetails();
-	},
-	onChange: eventHandleChange('onChange'),
-	onDelete: function () {
-		document.getElementById("displaypostercontainer").style.background = "url('./assets/images/noart250w.png')";
-		document.getElementById("displaypostercontainer").title = "No Movie Selected";
-		document.body.style.background = "url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
-		document.getElementById("selectedmoviecast").innerHTML = "";
-		document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b><br><br> ';
-		movieRunTime = null;
-		document.title = "Plan My Movie";
-	},
-	valueField: 'id',
-	labelField: 'title',
-	searchField: 'title',
-	create: false,
-	persist: false,
-	maxItems: 1,
-	load: function (query, callback) {
-		if (!query.length)
-			return callback();
-		$.ajax({
-			url: 'https://api.planmymovie.com/3/search/movie/',
-			type: 'GET',
-			dataType: 'json',
-			data: {
-				query: query,
-			},
-			error: function (e) {
-				callback(e);
-			},
-			success: function (res) {
-				callback(res.results);
-			}
-		});
-	},
-	// custom rendering functions for options and items
-	render: {
-		option:
-			function (item) {
-				movieRunTime = item.runtime;
-				currentMovieID = item.id;
-				posterPathPre = item.poster_path;
-				return '' +
-					'<div class="row border-bottom py-2">' +
-						'<div class="col-lg-4" id="col-lg-4-selected">' +
-							'<img class="img-fluid" id="selectorart" src="' + (!item.poster_path ? './assets/images/noartsmol.png' : 'https://image.tmdb.org/t/p/w92' + item.poster_path) + '"/>' +
-							'<div id="selecteddetails">' +
-								'<div class="mt-0">' +
-									'<b>' + item.title + '</b>' +
-									'<span class="small text-muted"> (' + item.release_date + ')</span>' +
-								'</div>' +
-							'</div>' +
-							'<div class="mb-1">' + 
-								(!item.overview ? 'No synopsis available at this time.' : item.overview) + 
-							'</div>' +
-						'</div>' +
-					'</div>';
-			},
-		item:
-			function (item) {
-				movieRunTime = item.runtime;
-				currentMovieID = item.id;
-				return '' +
-					'<div class="row border-bottom py-2">' +
-						'<div class="col-lg-4" id="col-lg-4-selected">' +
-							'<div class="mt-0">' + 
-								'<b>' + item.title + '</b>' +
-								'<span class="small text-muted"> (' + item.release_date + ')</span>' +
-							'</div>' +
-							'<div class="mb-1">' + 
-								(!item.overview ? 'No synopsis available at this time.' : item.overview) + 
-							'</div>' +
-						'</div>' +
-					'</div>';
-			}
-	}
-}))
-
-function eventHandleChange(name) {
-	return function () {
-		(JSON.stringify(arguments[0]));
-		currentMovieID = arguments[0] ? arguments[0] : "";
-		loadDetails(arguments[0] ? arguments[0] : "");
-	};
-}
-
 $(() => {
 	document.getElementById("timepickergo").value = getLocalTime();
-})
-
-$(() => {
 	$('#timepickergo').datetimepicker({
 		onSelect: eventTimeChange('onSelect'),
 		controlType: 'select',
@@ -171,8 +79,8 @@ function setSystemtime() {
 function copyToclip() {
 	navigator.clipboard.writeText(window.location.hostname + "?id=" + currentMovieID);
 }
-
-async function initialLoadDetails() {
+/*
+(async function initialLoadDetails() {
 	const idParam = new URLSearchParams(window.location.search).get('id');
 	if (idParam) {
 		let detailsResponse = await getMovieDetails(idParam);
@@ -194,7 +102,7 @@ async function initialLoadDetails() {
 		calcTime(movieRunTime);
 		return movie;
 	};
-};
+})();*/
 
 async function loadDetails(id) {
 	const idParam = id;
@@ -248,13 +156,16 @@ async function preload(a, b) {
 }
 
 async function updatePage(movie) {
-	document.getElementById("displaypostercontainer").style.background = movie.posterPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.posterPath + "')" : "url('./assets/images/noart250w.png')";
-	document.getElementById("displaypostercontainer").title = movie.movieTitle ? movie.movieTitle + " (" + movie.releaseDate + ")" : "No Movie Selected";
-	document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b> ' + timeConvert(movie.movieRunTime) + '<br><br>';
-	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
+	document.title = "Plan My Movie - " + movie.movieTitle;
 	document.body.style.background = movie.backDropPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.backDropPath + "') no-repeat center center fixed" : "url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
 	document.body.style.backgroundSize = "cover";
-	document.title = "Plan My Movie - " + movie.movieTitle;
+	document.getElementById("displaypostercontainer").style.background = movie.posterPath ? "url('" + "https://image.tmdb.org/t/p/original" + movie.posterPath + "')" : "url('./assets/images/noart250w.png')";
+	document.getElementById("displaypostercontainer").title = movie.movieTitle ? movie.movieTitle + " (" + movie.releaseDate + ")" : "No Movie Selected";
+	document.getElementById("title").innerHTML = movie.movieTitle;
+	document.getElementById("releasedate").innerHTML = "(" + movie.releaseDate + ")" + "<br><br>";
+	document.getElementById("synopsis").innerHTML = movie.synoposis + "<br><br>";
+	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
+	document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b> ' + timeConvert(movie.movieRunTime) + '<br><br>';
 }
 
 $(window).load(function () {
@@ -268,3 +179,4 @@ $(window).load(function () {
         $('.hover_bkgr').hide();
     });
 });
+

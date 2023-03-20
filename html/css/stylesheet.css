@@ -18,23 +18,27 @@ body {
 }
 
 footer {
-	border: 1px solid #fff;
-	border-radius: 15px;
-	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
-	background-color: rgba(255, 255, 255, .75);
-	backdrop-filter: blur(5px);
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	height: 50px;
+	width: 55vw;
 	margin: auto;
-	color: black;
-	margin-bottom: 2% !important;
+	padding-top: 10px;
 }
 
 footer:before {
 	box-shadow: inset 0 0 2000px rgba(255, 255, 255, .25);
 	filter: blur(10px);
+}
+
+#footwrapper {
+	border: 1px solid #fff;
+	border-radius: 15px;
+	box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+	background-color: rgba(255, 255, 255, .75);
+	backdrop-filter: blur(5px);
+	padding: 5px 2px;
+	color: black;
+	display:flex;
+	justify-content: center;
 }
 
 h1 {
@@ -47,7 +51,6 @@ h1 {
 	text-align: center;
 	background-color: white;
 	border-radius: 15px;
-	direction: rtl;
 	display: inline-block;
 	text-indent: -14px;
 	font-family: 'Source Sans Pro', monospace;
@@ -100,7 +103,8 @@ input[type=button]:hover {
 
 #tmdb-logo {
 	height: 13px;
-	display: inline-block;
+	padding-left: 5px;
+	display: inline-flex;
 }
 
 #display-poster {
@@ -110,6 +114,11 @@ input[type=button]:hover {
 	border: 1px solid rgb(163, 163, 163);
 	padding: 4px;
 	margin-right: 10px;
+}
+
+#title {
+	font-size: large;
+	font-weight: bold;
 }
 
 #moviename {
@@ -163,6 +172,14 @@ input[type=button]:hover {
 
 .ts-dropdown-content {
 	max-height: 500px !important;
+}
+
+.ts-wrapper {
+	border-radius: 10px !important;
+}
+
+.ts-control {
+	border-radius: inherit !important;
 }
 
 .hover_bkgr{
@@ -268,7 +285,7 @@ input[type=button]:hover {
 	}
 }
 
-@media only screen and (max-width : 320px) {
+@media only screen and (min-width : 320px) and (max-width : 1079px) {
 	h1 {
 		margin: auto;
 		width: 90%;
@@ -301,62 +318,8 @@ input[type=button]:hover {
 }
 
 
-@media only screen and (min-width: 321px) and (max-width : 767px) {
-	h1 {
-		margin: auto;
-		width: 90%;
-		display: block;
-		font-size: 25px;
-		text-align: center;
-	}
-
-	body {
-		width: 100%;
-		display: block;
-		margin-top: 10px;
-		margin-bottom: 10px;
-
-	}
-
-	#wrapper {
-		width: 95%;
-		margin: auto;
-	}
-
-	#wrapper>* {
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-
+@media only screen and (min-width: 321px) and (max-width : 1079px) {
 	.ts-dropdown-content {
 		max-height: 300px !important;
-	}
-}
-
-@media only screen and (min-width: 767px) and (max-width : 1079px) {
-	h1 {
-		margin: auto;
-		width: 90%;
-		display: block;
-		font-size: 25px;
-		text-align: center;
-	}
-
-	body {
-		width: 100%;
-		display: block;
-		margin-top: 10px;
-		margin-bottom: 10px;
-
-	}
-
-	#wrapper {
-		width: 95%;
-		margin: auto;
-	}
-
-	#wrapper>* {
-		padding-left: 10px;
-		padding-right: 10px;
 	}
 }
