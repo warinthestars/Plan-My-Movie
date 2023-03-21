@@ -24,21 +24,6 @@ var settings = {
 		if (!query.length) {
 			return callback();
         }
-	/*	$.ajax({
-			url: 'https://api.planmymovie.com/3/search/movie/',
-			type: 'GET',
-			dataType: 'json',
-			data: {
-				query: query,
-			},
-			error: function (e) {
-				callback(e);
-			},
-			success: function (res) {
-				callback(res.results);
-			}
-		});
-	}, */
     var url = 'https://api.planmymovie.com/3/search/movie/?query=' + encodeURIComponent(query);
     fetch(url)
         .then(response => response.json())
