@@ -42,7 +42,7 @@ function getLocalTime() {
 
 function calcTime(rt) {
 	var timeValue = $('#timepickergo').datetimepicker('getDate');
-	var calculatedtimeselector = document.getElementById("movieendtimeoutput");
+	var calculatedtimeselector = document.getElementsByClassName("movieendtimeoutput");
 	if (rt === void 0 && timeValue !== null) {
 		null;
 	} else if (rt !== void 0 && timeValue === null) {
@@ -156,3 +156,7 @@ $(window).load(function () {
     });
 });
 
+// Google Calendar: https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230321T031500Z%2F20230321T034500Z&details=SYNOPSIS&text=MOVIETITLE
+// Outlook: https://outlook.live.com/calendar/0/deeplink/compose?allday=false&body=SYNOPSIS&enddt=2023-03-21T03%3A45%3A00%2B00%3A00&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-03-21T03%3A15%3A00%2B00%3A00&subject=MOVIETITLE
+// Yahoo Calendar: https://calendar.yahoo.com/?desc=SYNOPSIS&dur=&et=20230321T034500Z&st=20230321T031500Z&title=MOVIETITLE&v=60
+// ICS data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20230321T031500Z%0ADTEND:20230321T034500Z%0ASUMMARY:MOVIETITLE%0ADESCRIPTION:SYNOPSIS%0AEND:VEVENT%0AEND:VCALENDAR%0A

@@ -47,7 +47,6 @@ h1 {
 	margin: auto;
 	font-weight: 300;
 	font-size: 35px;
-
 	text-align: center;
 	background-color: white;
 	border-radius: 15px;
@@ -147,16 +146,8 @@ input[type=button]:hover {
 	height: 50px;
 }
 
-.movieenddescriptortext {
+.movieenddescriptortext, .movieendtimeoutput {
 	font-size: larger;
-}
-
-#movieendtimeoutput {
-	font-size: larger;
-}
-
-.item {
-	width: 100%;
 }
 
 .img-fluid {
@@ -165,7 +156,7 @@ input[type=button]:hover {
 	max-width: 35% !important;
 }
 
-.col-lg-4 {
+.col-lg-4, .item {
 	width: 100% !important;
 }
 
@@ -310,7 +301,7 @@ input[type=button]:hover {
 	}
 
 	.ts-dropdown-content {
-		max-height: 500px !important;
+		max-height: 375px !important;
 	}
 
 	#selectandcast {
@@ -335,11 +326,5 @@ input[type=button]:hover {
 
 	#footwrapper {
 		justify-content: center;
-	}
-}
-
-@media only screen and (min-width: 321px) and (max-width : 1079px) {
-	.ts-dropdown-content {
-		max-height: 300px !important;
 	}
 }
