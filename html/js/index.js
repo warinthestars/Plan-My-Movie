@@ -79,30 +79,6 @@ function setSystemtime() {
 function copyToclip() {
 	navigator.clipboard.writeText(window.location.hostname + "?id=" + currentMovieID);
 }
-/*
-(async function initialLoadDetails() {
-	const idParam = new URLSearchParams(window.location.search).get('id');
-	if (idParam) {
-		let detailsResponse = await getMovieDetails(idParam);
-		let castResponse = await getMovieCast(idParam);
-		const movie = new MovieDetails(
-			detailsResponse.id,
-			detailsResponse.title,
-			detailsResponse.runtime,
-			detailsResponse.poster_path,
-			detailsResponse.backdrop_path,
-			detailsResponse.release_date,
-			detailsResponse.overview,
-			castResponse
-		);
-		await preload(movie.posterPath, movie.backDropPath);
-		currentMovieID = idParam;
-		movieRunTime = detailsResponse.runtime;
-		updatePage(movie);
-		calcTime(movieRunTime);
-		return movie;
-	};
-})();*/
 
 async function loadDetails(id) {
 	const idParam = id;
