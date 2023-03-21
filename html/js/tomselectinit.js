@@ -71,6 +71,7 @@ var settings = {
 			}
 	}
 };
+
 var control = new TomSelect("#select-movie-test", settings);
 
 function handleUpdatedQuery(name) {
