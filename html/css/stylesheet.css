@@ -47,13 +47,16 @@ h1 {
 	margin: auto;
 	font-weight: 300;
 	font-size: 35px;
-	letter-spacing: 14px;
+
 	text-align: center;
 	background-color: white;
 	border-radius: 15px;
 	display: inline-block;
-	text-indent: -14px;
 	font-family: 'Source Sans Pro', monospace;
+}
+
+#pagetitle {
+	letter-spacing: 14px;
 }
 
 input[type=button] {
@@ -328,6 +331,10 @@ input[type=button]:hover {
 
 	footer {
 		margin-bottom: 100px !important;
+	}
+
+	#footwrapper {
+		justify-content: center;
 	}
 }
 
