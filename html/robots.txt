@@ -1,7 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /assets/
-Disallow: /css/
-Disallow: /js/
 
 Sitemap: https://planmymovie.com/sitemap.xml
