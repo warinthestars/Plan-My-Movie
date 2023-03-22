@@ -44,7 +44,7 @@ function getLocalTime() {
 
 function calcTime(rt) {
 	var timeValue = $('#timepickergo').datetimepicker('getDate');
-	var calculatedtimeselector = document.getElementsByClassName("movieendtimeoutput");
+	var calculatedtimeselector = document.getElementById("movieendtimeoutput");
 	if (rt === void 0 && timeValue !== null) {
 		null;
 	} else if (rt !== void 0 && timeValue === null) {
@@ -56,7 +56,7 @@ function calcTime(rt) {
 	} else if (rt == 0 && timeValue !== null) {
 		calculatedtimeselector.innerHTML = '<u>Run-time information missing from database.</u>'
 	} else {
-		calculatedtimeselector.innerHTML = addMinutes(timeValue, rt).toLocaleString();
+		calculatedtimeselector.innerHTML = (addMinutes(timeValue, rt).toLocaleString()).toString();
 	}
 }
 
@@ -175,8 +175,6 @@ function getEvent(type) {
 		case "outlook":
 			let outlookCurrTime = (calCurrDateAndTime.toISOString().split('T')[1]).replace(/\./, '');
 			let outlookEndTime = (calEndDateAndTime.toISOString().split('T')[1]).replace(/\./, '');
-			console.log(outlookCurrTime);
-			console.log(outlookEndTime);
 			window.open(new URL("https://outlook.live.com/calendar/0/deeplink/compose?allday=false&body=" + movieSynopsis + "&enddt=" + (calEndDateAndTime.toISOString().split('T')[0]) + "T" + outlookEndTime.split(':')[0] + "%3A" + outlookEndTime.split(':')[1] + "%3A00%2B00%3A00&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=" + (calCurrDateAndTime.toISOString().split('T')[0]) + "T" + outlookCurrTime.split(':')[0] + "%3A" + outlookCurrTime.split(':')[1] + "%3A00%2B00%3A00&subject=" + movieTitle), "_blank");
 			break; 
 		case "yahoo":
