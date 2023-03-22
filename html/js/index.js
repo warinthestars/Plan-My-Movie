@@ -14,6 +14,8 @@ var currentMovieID;
 var movieRunTime;
 var currentTime;
 var movieEndTime;
+var movieSynopsis;
+var movieTitle;
 
 $(() => {
 	document.getElementById("timepickergo").value = getLocalTime();
@@ -54,7 +56,7 @@ function calcTime(rt) {
 	} else if (rt == 0 && timeValue !== null) {
 		calculatedtimeselector.innerHTML = '<u>Run-time information missing from database.</u>'
 	} else {
-		calculatedtimeselector.innerHTML = addMinutes(timeValue, rt).toLocaleString();
+		calculatedtimeselector.innerHTML = (addMinutes(timeValue, rt).toLocaleString()).toString();
 	}
 }
 
@@ -79,30 +81,6 @@ function setSystemtime() {
 function copyToclip() {
 	navigator.clipboard.writeText(window.location.hostname + "?id=" + currentMovieID);
 }
-/*
-(async function initialLoadDetails() {
-	const idParam = new URLSearchParams(window.location.search).get('id');
-	if (idParam) {
-		let detailsResponse = await getMovieDetails(idParam);
-		let castResponse = await getMovieCast(idParam);
-		const movie = new MovieDetails(
-			detailsResponse.id,
-			detailsResponse.title,
-			detailsResponse.runtime,
-			detailsResponse.poster_path,
-			detailsResponse.backdrop_path,
-			detailsResponse.release_date,
-			detailsResponse.overview,
-			castResponse
-		);
-		await preload(movie.posterPath, movie.backDropPath);
-		currentMovieID = idParam;
-		movieRunTime = detailsResponse.runtime;
-		updatePage(movie);
-		calcTime(movieRunTime);
-		return movie;
-	};
-})();*/
 
 async function loadDetails(id) {
 	const idParam = id;
@@ -122,6 +100,8 @@ async function loadDetails(id) {
 		await preload(movie.posterPath, movie.backDropPath);
 		currentMovieID = idParam;
 		movieRunTime = detailsResponse.runtime;
+		movieSynopsis = detailsResponse.overview;
+		movieTitle = detailsResponse.title;
 		await updatePage(movie);
 		calcTime(movieRunTime);
 	};
@@ -180,3 +160,35 @@ $(window).load(function () {
     });
 });
 
+function getEvent(type) {
+	let calCurrDateAndTime = $('#timepickergo').datetimepicker('getDate');
+	let calCurrDate = (calCurrDateAndTime.toISOString().split('T')[0]).replace(/-/g, '');
+	let calCurrTime = ((calCurrDateAndTime.toISOString().split('T')[1]).replace(/:/g, '')).replace(/\./, '');
+	let calEndDateAndTime = addMinutes(calCurrDateAndTime, movieRunTime);
+	let calEndDate = (calEndDateAndTime.toISOString().split('T')[0]).replace(/-/g, '');
+	let calEndTime = ((calEndDateAndTime.toISOString().split('T')[1]).replace(/:/g, '')).replace(/\./, '');
+
+	switch (type) {
+		case "gcal":
+			window.open(new URL("https://calendar.google.com/calendar/render?action=TEMPLATE&dates=" + calCurrDate + "T" + calCurrTime + "%2F" + calEndDate + "T" + calEndTime + "&details=" + movieSynopsis + "&text=" + movieTitle), '_blank');
+			break;
+		case "outlook":
+			let outlookCurrTime = (calCurrDateAndTime.toISOString().split('T')[1]).replace(/\./, '');
+			let outlookEndTime = (calEndDateAndTime.toISOString().split('T')[1]).replace(/\./, '');
+			window.open(new URL("https://outlook.live.com/calendar/0/deeplink/compose?allday=false&body=" + movieSynopsis + "&enddt=" + (calEndDateAndTime.toISOString().split('T')[0]) + "T" + outlookEndTime.split(':')[0] + "%3A" + outlookEndTime.split(':')[1] + "%3A00%2B00%3A00&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=" + (calCurrDateAndTime.toISOString().split('T')[0]) + "T" + outlookCurrTime.split(':')[0] + "%3A" + outlookCurrTime.split(':')[1] + "%3A00%2B00%3A00&subject=" + movieTitle), "_blank");
+			break; 
+		case "yahoo":
+			window.open(new URL("https://calendar.yahoo.com/?desc=" + movieSynopsis + "&dur=&et=" + calEndDate + "T" + calEndTime + "&st=" + calCurrDate + "T" + calCurrTime + "&title=" + movieTitle + "&v=60"), '_blank');
+			break;
+		case "ical":
+			var cal = ics();
+			cal.addEvent(movieTitle, movieSynopsis, "", calCurrDateAndTime.toISOString(), calEndDateAndTime.toISOString());
+			cal.download("itismovietimemydudes")
+			break;
+	}
+}
+
+// Google Calendar: https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230321T031500Z%2F20230321T034500Z&details=SYNOPSIS&text=MOVIETITLE
+// Outlook: https://outlook.live.com/calendar/0/deeplink/compose?allday=false&body=SYNOPSIS&enddt=2023-03-21T03%3A45%3A00%2B00%3A00&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=2023-03-21T03%3A15%3A00%2B00%3A00&subject=MOVIETITLE
+// Yahoo Calendar: https://calendar.yahoo.com/?desc=SYNOPSIS&dur=&et=20230321T034500Z&st=20230321T031500Z&title=MOVIETITLE&v=60
+// ICS data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20230321T031500Z%0ADTEND:20230321T034500Z%0ASUMMARY:MOVIETITLE%0ADESCRIPTION:SYNOPSIS%0AEND:VEVENT%0AEND:VCALENDAR%0A

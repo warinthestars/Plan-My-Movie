@@ -15,19 +15,16 @@
 		<title>Plan My Movie</title>
 		<html lang="en-US">
 
-		<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-		<link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
-
-		<meta name="Description" content="Use Plan My Movie to plan when to start your movie and know when it will end.">
-
+		<meta keywords="movie planning, movie night, movie nights, plan my movie">
+		<meta name="description" content="Plan My Movie makes sure you never have to worry about scheduling your movie nights again!">
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-		
+		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="google-site-verification" content="udtVXZfwvaHEimaoPkvFVu9h8UpS7VcIewnS0XFoNew" />
 
-		<meta charset="utf-8">
+		<link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/stylesheet.css">
@@ -43,10 +40,11 @@
 		<script src="js/issue-embed.min.js"></script>
 		<script src="js/issueembed.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/ics.deps.min.js"></script>
 	</head>
 
 	<body>
-		<h1 class="center">PLAN MY MOVIE</h1>
+		<h1 class="center"><span id="pagetitle">PLAN MY MOVI</span>E</h1>
 		<br>
 		<div class="wrapper">
 			<noscript id="nojs"><br><u>Javascript is disabled. Javascript is needed to use this website.</u></noscript>
@@ -83,7 +81,21 @@
 						<span class="movieenddescriptortext"><b>Calculated Movie End Time:</b></span> <span id="movieendtimeoutput"></span>
 					</i></div>
 				<br>
-				<button onclick="copyToclip()">Copy movie to clipboard</button>
+				<button onclick="copyToclip()">Copy movie to clipboard</button><br><br>
+				<div class="calbuttonscontainer">
+					<span id="calbutton" class="gcalbuttoncontainer" onclick="getEvent('gcal')">
+						<img src="assets/icons/gcal.svg" width="25px" height="25px" alt="Add to Google Calendar">
+					</span>&nbsp;
+					<span id="calbutton" class="yahoobuttoncontainer" onclick="getEvent('yahoo')">
+						<img src="assets/icons/yahoo.png" width="25px" height="25px" alt="Add to Yahoo Calendar">
+					</span>&nbsp;
+					<span id="calbutton" class="outlookbuttoncontainer" onclick="getEvent('outlook')">
+						<img src="assets/icons/outlook.svg" width="25px" height="25px" alt="Add to Outlook Calendar">
+					</span>&nbsp;
+					<span id="calbutton" class="icalbuttoncontainer" onclick="getEvent('ical')">
+						<img src="assets/icons/iCal.png" width="25px" height="25px" alt="Download iCal (.ics) file">
+					</span>
+				</div>
 			</fieldset>
 		</div>
 		<div id="posterpathpre"></div>
@@ -96,14 +108,14 @@
 		<!-- End Cloudflare Web Analytics -->
 
 		<div class="trigger_popup">
-			<img class="" src="assets/icons/info.png" width="50px" />
+			<img src="assets/icons/info.png" width="38px" height="38px" alt="Project Info" id="popupicon"/>
 		</div>
 
 		<div class="hover_bkgr">
 			<span class="helper"></span>
 			<div>
 				<div class="popupCloseButton">&times;</div>
-				<h3 id="comicsans">Use Plan My Movie to plan when to start your movie and know when it will end.</h3>
+				<h3>Use Plan My Movie to plan when to start your movie and know when it will end.</h3>
 				<br>
 				Created by <a href="https://github.com/stonefrango" target="_blank">stonefrango</a> and <a href="https://github.com/warinthestars" target="_blank">warinthestars</a>.
 				<br>

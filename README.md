@@ -20,6 +20,7 @@ Plan My Movie is actively developed by stonefrango and warinthestars.
 * [Tom-Select](https://github.com/orchidjs/tom-select)
 * jQuery and [jQueryUI](https://jqueryui.com)
 * [jQueryUI Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
+* [nwcell/ics.js](https://github.com/nwcell/ics.js)
 
 ## Submitting issues or feature requests
 Please submit all issue or feature requests at https://github.com/warinthestars/Plan-My-Movie/issues and tag them accordingly, or submit through the **Issue Embed** button on the bottom-right corner of the [Plan My Movie](https://planmymovie.com) page. 

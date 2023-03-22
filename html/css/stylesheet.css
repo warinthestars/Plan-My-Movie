@@ -47,13 +47,15 @@ h1 {
 	margin: auto;
 	font-weight: 300;
 	font-size: 35px;
-	letter-spacing: 14px;
 	text-align: center;
 	background-color: white;
 	border-radius: 15px;
 	display: inline-block;
-	text-indent: -14px;
 	font-family: 'Source Sans Pro', monospace;
+}
+
+#pagetitle {
+	letter-spacing: 14px;
 }
 
 input[type=button] {
@@ -144,16 +146,8 @@ input[type=button]:hover {
 	height: 50px;
 }
 
-.movieenddescriptortext {
+.movieenddescriptortext, #movieendtimeoutput {
 	font-size: larger;
-}
-
-#movieendtimeoutput {
-	font-size: larger;
-}
-
-.item {
-	width: 100%;
 }
 
 .img-fluid {
@@ -162,7 +156,7 @@ input[type=button]:hover {
 	max-width: 35% !important;
 }
 
-.col-lg-4 {
+.col-lg-4, .item {
 	width: 100% !important;
 }
 
@@ -193,11 +187,13 @@ input[type=button]:hover {
     width:100%;
     z-index:10000;
 }
+
 .hover_bkgr .helper{
     display:inline-block;
     height:100%;
     vertical-align:middle;
 }
+
 .hover_bkgr > div {
     background-color: #fff;
     box-shadow: 10px 10px 60px #555;
@@ -211,6 +207,7 @@ input[type=button]:hover {
     border-radius: 8px;
     padding: 15px 5%;
 }
+
 .popupCloseButton {
     background-color: #fff;
     border: 3px solid #999;
@@ -229,29 +226,38 @@ input[type=button]:hover {
     text-align: center;
 	padding-bottom: 5%;
 }
+
 .popupCloseButton:hover {
     background-color: #ccc;
 }
 
 .trigger_popup {
-	padding: 12px;
 	border: #000 !important;
 	border-radius: 2px;
 	background-color: rgb(170, 170, 0) !important;
 	position: fixed;
-    bottom: 2px;
-    left: 4px;
-	margin-left: 5px;
-	margin-bottom: 5px;
+    bottom: 7px;
+    left: 7px;
 	border-radius: 50%;
 	transition: 0.3s;
 	opacity: .5;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.8);
 	z-index: 100;
+	height: 58px;
+	width: 58px;
+	display: flex;
+	justify-content: center;
+	vertical-align: middle;
 }
 
 .trigger_popup:hover {
 	opacity: 1;
+}
+
+#popupicon {
+	vertical-align: middle;
+	margin-top: auto !important;
+	margin-bottom: auto !important;
 }
 
 #displaypostercontainer {
@@ -267,22 +273,8 @@ input[type=button]:hover {
 	background-image: url('../assets/images/noselection250w.png');
 }
 
-@media screen and (max-width: 767px) {
-	#selectandcast {
-		flex: auto;
-	}
-
-	#mobilebreak {
-		display: unset;
-	}
-
-	#displaypostercontainer {
-		display: flex;
-		flex: auto;
-		margin: auto !important;
-		max-width: 100%;
-		float: unset;
-	}
+#calbutton {
+	cursor: pointer;
 }
 
 @media only screen and (min-width : 320px) and (max-width : 1079px) {
@@ -299,27 +291,44 @@ input[type=button]:hover {
 		display: block;
 		margin-top: 10px;
 		margin-bottom: 10px;
+		min-width: 100vw !important;
 	}
 
-	#wrapper {
-		width: 95%;
-		margin: auto;
-		max-width: 90vw;
+	.wrapper, footer {
+		margin: 2px !important;
+		min-width: 99vw !important;
 	}
 
-	#wrapper>* {
+	.wrapper>* {
 		padding-left: 10px;
 		padding-right: 10px;
 	}
 
 	.ts-dropdown-content {
-		max-height: 500px !important;
+		max-height: 375px !important;
 	}
-}
 
+	#selectandcast {
+		flex: auto;
+	}
+	
+	#mobilebreak {
+		display: unset;
+	}
+	
+	#displaypostercontainer {
+		display: flex;
+		flex: auto;
+		margin: auto !important;
+		max-width: 100%;
+		float: unset;
+	}
 
-@media only screen and (min-width: 321px) and (max-width : 1079px) {
-	.ts-dropdown-content {
-		max-height: 300px !important;
+	footer {
+		margin-bottom: 100px !important;
+	}
+
+	#footwrapper {
+		justify-content: center;
 	}
 }
