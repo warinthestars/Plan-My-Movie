@@ -40,6 +40,7 @@
 		<script src="js/issue-embed.min.js"></script>
 		<script src="js/issueembed.js"></script>
 		<script src="js/index.js"></script>
+		<script src="js/ics.deps.min.js"></script>
 	</head>
 
 	<body>
@@ -80,7 +81,21 @@
 						<span class="movieenddescriptortext"><b>Calculated Movie End Time:</b></span> <span class="movieendtimeoutput"></span>
 					</i></div>
 				<br>
-				<button onclick="copyToclip()">Copy movie to clipboard</button>
+				<button onclick="copyToclip()">Copy movie to clipboard</button><br><br>
+				<div class="calbuttonscontainer">
+					<span id="calbutton" class="gcalbuttoncontainer" onclick="getEvent('gcal')">
+						<img src="assets/icons/gcal.svg" width="25px" height="25px" alt="Add to Google Calendar">
+					</span>&nbsp;
+					<span id="calbutton" class="yahoobuttoncontainer" onclick="getEvent('yahoo')">
+						<img src="assets/icons/yahoo.png" width="25px" height="25px" alt="Add to Yahoo Calendar">
+					</span>&nbsp;
+<!--					<span id="calbutton" class="outlookbuttoncontainer" onclick="getEvent('outlook')">
+						<img src="assets/icons/outlook.svg" width="25px" height="25px" alt="Add to Outlook Calendar">
+					</span>&nbsp; -->
+					<span id="calbutton" class="icalbuttoncontainer" onclick="getEvent('ical')">
+						<img src="assets/icons/iCal.png" width="25px" height="25px" alt="Download iCal (.ics) file">
+					</span>
+				</div>
 			</fieldset>
 		</div>
 		<div id="posterpathpre"></div>
