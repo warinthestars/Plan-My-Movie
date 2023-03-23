@@ -43,7 +43,7 @@
 		<script src="js/ics.deps.min.js"></script>
 	</head>
 
-	<body>
+	<body onload="setInitBackdrop()">
 		<h1 class="center"><span id="pagetitle">PLAN MY MOVI</span>E</h1>
 		<br>
 		<div class="wrapper">
@@ -56,11 +56,11 @@
 						<div id="displaypostercontainer"></div>
 						<div id="textselection">
 							<span id="titleanddate">
-								<b id="title"></b> <span id="releasedate"></span>
+								<b id="title">Select a movie to get your movie end time.</b> <span id="releasedate"></span>
 							</span>
 							<div id="synopsis"></div>
-							<div id="cast"><b style="float: left; margin-right: 10px;">Cast:	</b>
-								<div id="selectedmoviecast">Select a movie!</div>
+							<div id="castcontainer"><b style="float: left; margin-right: 10px;" id="cast"></b>
+								<div id="selectedmoviecast"></div>
 							</div>
 						</div>
 					</div>
@@ -123,6 +123,9 @@
 				<br>
 				<br>
 				To try new features or see development progress, visit our <a href="https://dev.planmymovie.com" target="_blank">Devolopment Site</a> at your own risk. 
+				<br>
+				<br>
+				Currently selected background by <a href="" id="bgsource"><span id="bgauthor"></span> on <span id="service"></span></a>.
 			</div>
 		</div>
 	</body>
