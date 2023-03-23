@@ -6,8 +6,12 @@ var settings = {
 	onDelete: function () {
 		document.getElementById("displaypostercontainer").style.background = "url('./assets/images/noart250w.png')";
 		document.getElementById("displaypostercontainer").title = "No Movie Selected";
-		document.body.style.background = "url('./assets/images/hometheatrebg.jpg') no-repeat center center fixed";
+		document.body.style.background = "url('" + pickedBG.source + "') no-repeat center center fixed";
 		document.getElementById("selectedmoviecast").innerHTML = "";
+        document.getElementById("cast").innerHTML = "";
+        document.getElementById("title").innerHTML = "Select a movie to get your movie end time.";
+        document.getElementById("releasedate").innerHTML = "";
+        document.getElementById("synopsis").innerHTML = "";
 		document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b><br><br> ';
 		movieRunTime = null;
 		document.title = "Plan My Movie";
