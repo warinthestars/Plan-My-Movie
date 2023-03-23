@@ -201,13 +201,15 @@ function getEvent(type) {
 function chooseRandomBackdrop () {
 	const initbackgrounds = {
 		backgrounds: [
-			{source: "./assets/images/hometheatrebg.jpg", author: "Jeremy Yap", originalloc: "https://unsplash.com/photos/J39X2xX_8CQ", service: "Unsplash"},
-			{source: "a", author: "b", originalloc: "c", service: ""},
-			{source: "d", author: "e", originalloc: "f", service: ""},
-			{source: "g", author: "h", originalloc: "i", service: ""},
-			{source: "j", author: "k", originalloc: "l", service: ""},
-			{source: "m", author: "n", originalloc: "o", service: ""},
-			{source: "p", author: "q", originalloc: "r", service: ""}
+			{source: "./assets/images/backgrounds/1.jpg", author: "Jeremy Yap", originalloc: "https://unsplash.com/photos/J39X2xX_8CQ", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/2.jpg", author: "Chris Murray", originalloc: "https://unsplash.com/photos/iwfHhOZLVMU", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/3.jpg", author: "Denise Jans", originalloc: "https://unsplash.com/photos/Lq6rcifGjOU", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/4.jpg", author: "Felix Mooneeram", originalloc: "https://unsplash.com/photos/evlkOfkQ5rE", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/5.jpg", author: "Jakob Owens", originalloc: "https://unsplash.com/photos/CiUR8zISX60", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/6.jpg", author: "Kilyan Sockalingum", originalloc: "https://unsplash.com/photos/nW1n9eNHOsc", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/7.jpg", author: "Marius GIRE", originalloc: "https://unsplash.com/photos/VuN3x0cKC4I", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/8.jpg", author: "Myke Simon", originalloc: "https://unsplash.com/photos/atsUqIm3wxo", service: "Unsplash"},
+			{source: "./assets/images/backgrounds/9.jpg", author: "Tyson Moultrie", originalloc: "https://unsplash.com/photos/BQTHOGNHo08", service: "Unsplash"}
 		]
 	}
 	return initbackgrounds.backgrounds[getRndInteger(0, initbackgrounds.backgrounds.length)];
