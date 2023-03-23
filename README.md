@@ -7,7 +7,7 @@ Ever wonder what time a movie will be finished so you can plan around it?
 Plan My Movie is actively developed by stonefrango and warinthestars.
 
 ## Thanks and Attributions
-* [Background: Jeremy Yap on Unsplash](https://unsplash.com/photos/J39X2xX_8CQ)
+* [Backgrounds sourced through Unsplash](https://unsplash.com/collections/Aiqocg7kHW0/plan-my-movie-backdrops)
 * [API data and movie logos: TMDb](https://www.themoviedb.org/). 
     * Disclaimer: This product uses the TMDb API but is not endorsed or certified by TMDb.
 * [Font: Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro) designed by [Paul D. Hunt](https://fonts.google.com/?query=Paul+D.+Hunt)
