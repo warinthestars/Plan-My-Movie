@@ -88,7 +88,7 @@ function setSystemtime() {
 }
 
 function copyToclip() {
-	navigator.clipboard.writeText(window.location.hostname + "?id=" + currentMovieID);
+	navigator.clipboard.writeText("https://" + window.location.hostname + "?id=" + currentMovieID);
 }
 
 async function loadDetails(id) {
