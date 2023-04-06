@@ -31,7 +31,6 @@
 		<link rel="stylesheet" href="css/jquery-ui.css">
 		<link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
 		<link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.3/dist/css/tom-select.default.css" rel="stylesheet"> 
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
 
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 		<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
@@ -107,27 +106,27 @@
 		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f1c6f93d2c614f52aaae648334173232"}'></script>
 		<!-- End Cloudflare Web Analytics -->
 
-		<div class="trigger_popup">
+		<div id="myBtn">
 			<img src="assets/icons/info.png" width="38px" height="38px" alt="Project Info" id="popupicon"/>
 		</div>
-
-		<div class="hover_bkgr">
-			<span class="helper"></span>
-			<div>
-				<div class="popupCloseButton">&times;</div>
-				<h3>Use Plan My Movie to plan when to start your movie and know when it will end.</h3>
-				<br>
-				Created by <a href="https://github.com/stonefrango" target="_blank">stonefrango</a> and <a href="https://github.com/warinthestars" target="_blank">warinthestars</a>.
-				<br>
-				View this project on GitHub: <a href="https://github.com/warinthestars/Plan-My-Movie" target="_blank">Plan My Movie</a>
-				<br>
-				<br>
-				To try new features or see development progress, visit our <a href="https://dev.planmymovie.com" target="_blank">Devolopment Site</a> at your own risk. 
-				<br>
-				<br>
-				<a href="https://unsplash.com/collections/Aiqocg7kHW0/plan-my-movie-backdrops" target="_blank">Backgrounds sourced through Unsplash</a>.
+		<div id="myModal" class="modal">
+			<div class="modal-content">
+			  <span class="close">&times;</span>
+			  <h3>Use Plan My Movie to plan when to start your movie and know when it will end.</h2>
+			  Created by <a href="https://github.com/stonefrango" target="_blank">stonefrango</a> and <a href="https://github.com/warinthestars" target="_blank">warinthestars</a>.
+			  <br>
+			  View this project on GitHub: <a href="https://github.com/warinthestars/Plan-My-Movie" target="_blank">Plan My Movie</a>
+			  <br>
+			  <br>
+			  To try new features or see development progress, visit our <a href="https://dev.planmymovie.com" target="_blank">Development Site</a> at your own risk. 
+			  <br>
+			  <br>
+			  <a href="https://unsplash.com/collections/Aiqocg7kHW0/plan-my-movie-backdrops" target="_blank">Backgrounds sourced through Unsplash</a>.
+			  <br>
+			  <br>
 			</div>
 		</div>
+		<script src="js/infobutton.js"></script>
 	</body>
 
 	<footer>
