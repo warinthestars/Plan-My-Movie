@@ -20,10 +20,12 @@ var movieTitle;
 const pickedBG = chooseRandomBackdrop();
 
 function setInitBackdrop() {
+	try {
 	document.body.style.background = "url('" + pickedBG.source + "') no-repeat center center fixed";
 	document.getElementById("bgauthor").innerHTML = pickedBG.author;
 	document.getElementById("service").innerHTML = pickedBG.service;
-	document.getElementById("bgsource").href = pickedBG.originalloc;
+	document.getElementById("bgsource").href = pickedBG.originalloc; }
+	catch {}
 }
 
 $(() => {
@@ -157,18 +159,6 @@ async function updatePage(movie) {
 	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
 	document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b> ' + timeConvert(movie.movieRunTime) + '<br><br>';
 }
-
-$(window).load(function () {
-    $(".trigger_popup").click(function(){
-       $('.hover_bkgr').show();
-    });
-    $('.hover_bkgr').click(function(){
-        $('.hover_bkgr').hide();
-    });
-    $('.popupCloseButton').click(function(){
-        $('.hover_bkgr').hide();
-    });
-});
 
 function getEvent(type) {
 	let calCurrDateAndTime = $('#timepickergo').datetimepicker('getDate');
