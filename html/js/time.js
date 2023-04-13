@@ -29,7 +29,9 @@ function calcTime(rt) {
 	} else if (rt == 0 && timeValue !== null) {
 		calculatedtimeselector.innerHTML = '<u>Run-time information missing from database.</u>'
 	} else {
-		calculatedtimeselector.innerHTML = addMinutes(timeValue, rt);
+		let calculatedTime = addMinutes(timeValue, rt);
+        let userFriendlyTime = calculatedTime.toLocaleString(DateTime.DATETIME_FULL);
+        calculatedtimeselector.innerHTML = userFriendlyTime;
 	}
 }
 
@@ -53,14 +55,15 @@ function addMinutes(date, min) {
     let isodate = thedate.toISOString();
     let start = DateTime.fromISO(isodate);
     let result = start.plus({minutes: min});
-    return result.toLocaleString(DateTime.DATETIME_FULL);
+    return result;
 }
 
 function getEvent(type) {
-	let calCurrDateAndTime = fp.parseDate("Z");
+	let calCurrDateAndTime = new Date(fp.selectedDates);
 	let calCurrDate = (calCurrDateAndTime.toISOString().split('T')[0]).replace(/-/g, '');
 	let calCurrTime = ((calCurrDateAndTime.toISOString().split('T')[1]).replace(/:/g, '')).replace(/\./, '');
-	let calEndDateAndTime = addMinutes(calCurrDateAndTime, movieRunTime);
+	let calEndDateAndTimeRaw = new Date(addMinutes(calCurrDateAndTime, movieRunTime));
+    let calEndDateAndTime = new Date(calEndDateAndTimeRaw.toLocaleString(DateTime.DATETIME_FULL));
 	let calEndDate = (calEndDateAndTime.toISOString().split('T')[0]).replace(/-/g, '');
 	let calEndTime = ((calEndDateAndTime.toISOString().split('T')[1]).replace(/:/g, '')).replace(/\./, '');
 
