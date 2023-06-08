@@ -20,71 +20,12 @@ var movieTitle;
 const pickedBG = chooseRandomBackdrop();
 
 function setInitBackdrop() {
+	try {
 	document.body.style.background = "url('" + pickedBG.source + "') no-repeat center center fixed";
 	document.getElementById("bgauthor").innerHTML = pickedBG.author;
 	document.getElementById("service").innerHTML = pickedBG.service;
-	document.getElementById("bgsource").href = pickedBG.originalloc;
-}
-
-$(() => {
-	document.getElementById("timepickergo").value = getLocalTime();
-	$('#timepickergo').datetimepicker({
-		onSelect: eventTimeChange('onSelect'),
-		controlType: 'select',
-		timeFormat: "h:mm TT",
-		timeInput: true,
-		parse: "loose",
-		alwaysSetTime: true
-	});
-})
-
-function eventTimeChange() {
-	return function () {
-		calcTime(movieRunTime);
-	};
-}
-
-function getLocalTime() {
-	currentTime = new Date().toLocaleString();
-	result = currentTime.replace(',', '');
-	calcTime(movieRunTime);
-	return result;
-}
-
-function calcTime(rt) {
-	var timeValue = $('#timepickergo').datetimepicker('getDate');
-	var calculatedtimeselector = document.getElementById("movieendtimeoutput");
-	if (rt === void 0 && timeValue !== null) {
-		null;
-	} else if (rt !== void 0 && timeValue === null) {
-		calculatedtimeselector.innerHTML = '<u>Select a time and try again!</u>';
-	} else if (rt === void 0 && timeValue === null) {
-		calculatedtimeselector.innerHTML = '<u>Select a movie and time and try again!</u>';
-	} else if (rt === null && timeValue !== null) {
-		calculatedtimeselector.innerHTML = '<u>Select a movie and try again!</u>';
-	} else if (rt == 0 && timeValue !== null) {
-		calculatedtimeselector.innerHTML = '<u>Run-time information missing from database.</u>'
-	} else {
-		calculatedtimeselector.innerHTML = (addMinutes(timeValue, rt).toLocaleString()).toString();
-	}
-}
-
-var timeConvert = (n) => {
-	var minutes = n % 60;
-	var hours = (n - minutes) / 60;
-	var minutesPlurality;
-	var hoursPlurality;
-	minutes == 1 ? minutesPlurality = "minute" : minutesPlurality = "minutes";
-	hours == 1 ? hoursPlurality = "hour" : hoursPlurality = "hours";
-	return hours + " " + hoursPlurality + " and " + minutes + " " + minutesPlurality;
-}
-
-function addMinutes(date, minutes) {
-	return movieEndTime = new Date(+date + minutes * 60000);
-}
-
-function setSystemtime() {
-	document.getElementById("timepickergo").value = getLocalTime();
+	document.getElementById("bgsource").href = pickedBG.originalloc; }
+	catch {}
 }
 
 function copyToclip() {
@@ -156,46 +97,6 @@ async function updatePage(movie) {
 	document.getElementById("cast").innerHTML = "Cast: "
 	document.getElementById("selectedmoviecast").innerHTML = movie.movieCast;
 	document.getElementById("displayrt").innerHTML = '<b>Movie Run-Time:</b> ' + timeConvert(movie.movieRunTime) + '<br><br>';
-}
-
-$(window).load(function () {
-    $(".trigger_popup").click(function(){
-       $('.hover_bkgr').show();
-    });
-    $('.hover_bkgr').click(function(){
-        $('.hover_bkgr').hide();
-    });
-    $('.popupCloseButton').click(function(){
-        $('.hover_bkgr').hide();
-    });
-});
-
-function getEvent(type) {
-	let calCurrDateAndTime = $('#timepickergo').datetimepicker('getDate');
-	let calCurrDate = (calCurrDateAndTime.toISOString().split('T')[0]).replace(/-/g, '');
-	let calCurrTime = ((calCurrDateAndTime.toISOString().split('T')[1]).replace(/:/g, '')).replace(/\./, '');
-	let calEndDateAndTime = addMinutes(calCurrDateAndTime, movieRunTime);
-	let calEndDate = (calEndDateAndTime.toISOString().split('T')[0]).replace(/-/g, '');
-	let calEndTime = ((calEndDateAndTime.toISOString().split('T')[1]).replace(/:/g, '')).replace(/\./, '');
-
-	switch (type) {
-		case "gcal":
-			window.open(new URL("https://calendar.google.com/calendar/render?action=TEMPLATE&dates=" + calCurrDate + "T" + calCurrTime + "%2F" + calEndDate + "T" + calEndTime + "&details=" + movieSynopsis + "&text=" + movieTitle), '_blank');
-			break;
-		case "outlook":
-			let outlookCurrTime = (calCurrDateAndTime.toISOString().split('T')[1]).replace(/\./, '');
-			let outlookEndTime = (calEndDateAndTime.toISOString().split('T')[1]).replace(/\./, '');
-			window.open(new URL("https://outlook.live.com/calendar/0/deeplink/compose?allday=false&body=" + movieSynopsis + "&enddt=" + (calEndDateAndTime.toISOString().split('T')[0]) + "T" + outlookEndTime.split(':')[0] + "%3A" + outlookEndTime.split(':')[1] + "%3A00%2B00%3A00&path=%2Fcalendar%2Faction%2Fcompose&rru=addevent&startdt=" + (calCurrDateAndTime.toISOString().split('T')[0]) + "T" + outlookCurrTime.split(':')[0] + "%3A" + outlookCurrTime.split(':')[1] + "%3A00%2B00%3A00&subject=" + movieTitle), "_blank");
-			break; 
-		case "yahoo":
-			window.open(new URL("https://calendar.yahoo.com/?desc=" + movieSynopsis + "&dur=&et=" + calEndDate + "T" + calEndTime + "&st=" + calCurrDate + "T" + calCurrTime + "&title=" + movieTitle + "&v=60"), '_blank');
-			break;
-		case "ical":
-			var cal = ics();
-			cal.addEvent(movieTitle, movieSynopsis, "", calCurrDateAndTime.toISOString(), calEndDateAndTime.toISOString());
-			cal.download("itismovietimemydudes")
-			break;
-	}
 }
 
 function chooseRandomBackdrop () {
