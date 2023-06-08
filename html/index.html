@@ -28,16 +28,14 @@
 
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/stylesheet.css">
-		<link rel="stylesheet" href="css/jquery-ui.css">
-		<link rel="stylesheet" href="css/jquery-ui-timepicker-addon.css">
-		<link href="https://cdn.jsdelivr.net/npm/tom-select@2.0.3/dist/css/tom-select.default.css" rel="stylesheet"> 
 
-		<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-		<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0=" crossorigin="anonymous"></script>
-		<script src="js/jquery-ui-timepicker-addon.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tom-select@2.0.3/dist/css/tom-select.default.css"> 
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 		<script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
-		<script src="js/issue-embed.min.js"></script>
-		<script src="js/issueembed.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+		<script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
+
 		<script src="js/index.js"></script>
 		<script src="js/ics.deps.min.js"></script>
 	</head>
@@ -71,6 +69,7 @@
 				<div id="selectcustomtime">
 					<b>Select a Time: </b>
 					<input id="timepickergo" type="datetime"></input> <button onclick="setSystemtime()">Use current time</button>
+					<script src="js/time.js"></script>
 				</div>
 				<br>
 				<div id="displayrt">
@@ -99,9 +98,6 @@
 		</div>
 		<div id="posterpathpre"></div>
 		<div id="bgpre"></div>
-		<div id="issue-embed"></div>
-		<script src="js/issue-embed.min.js"></script>
-		<script src="js/issueembed.js"></script>
 		<!-- Cloudflare Web Analytics -->
 		<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "f1c6f93d2c614f52aaae648334173232"}'></script>
 		<!-- End Cloudflare Web Analytics -->
